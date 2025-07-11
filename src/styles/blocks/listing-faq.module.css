@@ -1,0 +1,20 @@
+@reference '../global.css';
+
+.wrapper {
+	--filter-size: 360px;
+	@apply flex items-start;
+
+	.filter {
+		@apply w-[var(--filter-size)];
+
+		& + .listing {
+			@apply w-[calc(100%-var(--filter-size))] pl-10;
+		}
+	}
+}
+
+.filter {
+	.search {
+		@apply w-full;
+	}
+}

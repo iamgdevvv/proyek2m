@@ -1,0 +1,58 @@
+@reference '../global.css';
+
+.footer {
+	@apply relative;
+	@apply w-[calc(100%-32px)] mx-auto max-w-[var(--container)];
+	@apply flex flex-wrap;
+}
+
+.branding {
+	@apply w-full mr-auto lg:w-auto;
+	@apply flex justify-between lg:flex-col;
+}
+
+.logo {
+	@apply size-[60px];
+	@apply flex items-start;
+
+	img {
+		@apply size-full;
+		@apply object-contain;
+	}
+}
+
+.colophon {
+	@apply mt-auto;
+}
+
+.socials {
+	@apply mb-1 flex items-center gap-1;
+}
+
+.copyright {
+	@apply hidden lg:inline;
+	@apply ml-2;
+	@apply text-sm;
+}
+
+.navigation {
+	@apply min-w-44 mt-10 pl-2;
+	@apply lg:mt-0 lg:pl-0;
+
+	.title_nav {
+		@apply text-base font-semibold;
+		@apply mb-4;
+	}
+
+	.menu_nav {
+		@apply text-sm text-[var(--gray-color)];
+
+		li + li {
+			@apply mt-2;
+		}
+
+		a:hover {
+			@apply text-[var(--primary-color)];
+		}
+	}
+}

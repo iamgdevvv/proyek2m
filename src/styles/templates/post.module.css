@@ -1,0 +1,43 @@
+@reference '../global.css';
+
+.featuredImage {
+	@apply w-full aspect-[16/9];
+	@apply rounded-lg;
+}
+
+.article {
+	@apply relative;
+	@apply w-full mt-10;
+	@apply flex items-stretch flex-wrap;
+
+	.heading {
+		@apply w-full pr-12 md:pr-0;
+	}
+
+	.content,
+	.sidebar {
+		@apply w-full;
+	}
+
+	@media all and (min-width: theme(--breakpoint-lg)) {
+		--sidebar-size: 280px;
+
+		.sidebar {
+			@apply w-[var(--sidebar-size)];
+		}
+
+		.content {
+			@apply w-[calc(100%-var(--sidebar-size))] pl-16;
+		}
+	}
+
+	@media all and (max-width: theme(--breakpoint-lg)) {
+		.content {
+			@apply -order-1;
+		}
+
+		.sidebar {
+			@apply mt-8;
+		}
+	}
+}

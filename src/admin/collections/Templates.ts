@@ -1,0 +1,169 @@
+import type { CollectionConfig } from 'payload'
+
+import { BannerBlock } from '$payload-blocks/Banner'
+import { afterReadHookLink } from '$payload-fields/link'
+import { metafield } from '$payload-fields/metadata'
+import { authenticated, authenticatedActionRole } from '$payload-libs/access-rules'
+import { templateBuiltWith } from '$payload-libs/enum'
+import { revalidateChange, revalidateDelete } from '$payload-libs/hooks/revalidate'
+import { generatePreviewPath } from '$payload-libs/preview-path'
+
+export const Templates: CollectionConfig = {
+	slug: 'templates',
+	dbName: 'tplc',
+	defaultPopulate: {
+		id: true,
+		title: true,
+		slug: true,
+		link: true,
+		excerpt: true,
+		featuredImage: true,
+		previewUrl: true,
+		estimatedHours: true,
+		builtWith: true,
+		teams: true,
+		services: true,
+		publishedAt: true,
+		createdAt: true,
+		updatedAt: true,
+	},
+	admin: {
+		useAsTitle: 'title',
+		defaultColumns: ['title', 'slug', 'updatedAt', 'author'],
+		livePreview: {
+			url: ({ data, req }) =>
+				generatePreviewPath({
+					path: typeof data?.link === 'string' ? data.link : '/',
+					req,
+				}),
+		},
+		preview: (data, { req }) =>
+			generatePreviewPath({
+				path: typeof data?.link === 'string' ? data.link : '',
+				req,
+			}),
+	},
+	versions: {
+		drafts: {
+			autosave: false,
+		},
+		maxPerDoc: 10,
+	},
+	access: {
+		create: authenticated,
+		read: () => true,
+		update: authenticatedActionRole,
+		delete: authenticatedActionRole,
+	},
+	hooks: {
+		afterRead: [afterReadHookLink],
+		afterChange: [revalidateChange],
+		afterDelete: [revalidateDelete],
+	},
+	fields: [
+		{
+			type: 'tabs',
+			tabs: [
+				{
+					label: 'General',
+					fields: [
+						{
+							type: 'row',
+							fields: [
+								{
+									name: 'previewUrl',
+									type: 'text',
+									admin: {
+										width: '50%',
+									},
+								},
+								{
+									name: 'estimatedHours',
+									type: 'number',
+									admin: {
+										width: '50%',
+									},
+								},
+							],
+						},
+						{
+							name: 'builtWith',
+							type: 'select',
+							enumName: 'tplcbw',
+							hasMany: true,
+							options: templateBuiltWith,
+						},
+					],
+				},
+				{
+					label: 'Banner',
+					fields: [
+						{
+							type: 'group',
+							name: 'banner',
+							label: false,
+							fields: BannerBlock.fields,
+						},
+					],
+				},
+				{
+					label: 'Editor',
+					fields: [
+						{
+							name: 'content',
+							type: 'blocks',
+							blocks: [],
+							blockReferences: [
+								'actions',
+								'baseContent',
+								'cardForm',
+								'clientStory',
+								'clientStorySlider',
+								'clientStoryTeams',
+								'collapsibleTab',
+								'contentCards',
+								'contentIconGrid',
+								'contentMedia',
+								'contentMediaCard',
+								'contentCtaCard',
+								'divider',
+								'featuredListingClient',
+								'gallery',
+								'headingListing',
+								'insightDisplay',
+								'listingClient',
+								'listingFaq',
+								'listingPost',
+								'listingPostCategory',
+								'listingService',
+								'listingTeam',
+								'listingTemplate',
+								'media',
+								'solutions',
+								'socialMap',
+								'spacing',
+								'usp',
+							],
+						},
+					],
+				},
+			],
+		},
+		...metafield({
+			general: [
+				{
+					name: 'teams',
+					type: 'relationship',
+					relationTo: 'teams',
+					hasMany: true,
+				},
+				{
+					name: 'services',
+					type: 'relationship',
+					relationTo: 'services',
+					hasMany: true,
+				},
+			],
+		}),
+	],
+}

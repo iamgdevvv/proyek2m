@@ -1,0 +1,19 @@
+@reference '../global.css';
+
+.fields {
+	@apply flex items-start flex-wrap;
+	@apply w-auto min-w-full -mx-2.5 -mb-5;
+
+	& > * {
+		@apply px-2.5 mb-5;
+
+		@media all and (max-width: theme(--breakpoint-sm)) {
+			@apply !w-full;
+		}
+	}
+}
+
+.actions {
+	@apply flex justify-end;
+	@apply mt-xl;
+}
