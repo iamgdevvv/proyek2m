@@ -1,5 +1,5 @@
-import path from 'path'
 import fs from 'fs'
+import path from 'path'
 import pino from 'pino'
 
 const logDir = path.join(process.cwd(), 'logs')
@@ -20,7 +20,11 @@ export const logger = pino({
 					detail: rest,
 				})
 
-				logStream.write(`${logData}\n`)
+				console.log({ logData })
+
+				if (process.env.NODE_ENV !== 'production') {
+					logStream.write(`${logData}\n`)
+				}
 			} catch (err) {
 				console.error('Logger error', { err })
 			}
