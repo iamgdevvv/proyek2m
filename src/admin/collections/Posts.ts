@@ -92,6 +92,7 @@ export const Posts: CollectionConfig = {
 								'listingTeam',
 								'listingTemplate',
 								'media',
+								'showReusable',
 								'solutions',
 								'socialMap',
 								'spacing',

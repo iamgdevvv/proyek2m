@@ -9,13 +9,13 @@ import {
 	Transition,
 } from '@mantine/core'
 import { useClickOutside, useDisclosure } from '@mantine/hooks'
-import { useId, type HTMLAttributes } from 'react'
+import { useId, useMemo, type HTMLAttributes } from 'react'
 
-import Button from '$blocks/button'
+import Actions from '$blocks/actions'
 import Image from '$components/Image'
 import Link from '$components/Link'
 import { useIsMedia } from '$hooks/media-query'
-import type { Site } from '$payload-types'
+import type { Actions as ActionsBlock, Site } from '$payload-types'
 import { collectionLink } from '$utils/common'
 import { cx } from '$utils/styles'
 
@@ -30,6 +30,22 @@ export default function Header({ site, ...props }: HeaderProps) {
 	const [openNav, { close: closeNav, toggle: toggleNav }] = useDisclosure()
 	const mediaQuery = useIsMedia()
 	const refNavMobile = useClickOutside(() => closeNav())
+
+	const actionItems = useMemo((): ActionsBlock['items'] => {
+		return site?.actions?.map((action, index) => ({
+			...action,
+			variant: action.variant || index === 0 ? 'light' : 'filled',
+			size: action.size || 'sm',
+			color: {
+				...action.color,
+				base: action.color?.base || index === 0 ? 'secondary' : 'primary',
+			},
+			rounded: {
+				...action.rounded,
+				base: action.rounded?.base || 'md',
+			},
+		}))
+	}, [site])
 
 	return (
 		<header
@@ -117,17 +133,12 @@ export default function Header({ site, ...props }: HeaderProps) {
 							</nav>
 						) : null}
 						{site?.actions && site.actions.length ? (
-							<div className={styles.actions_desktop}>
-								{site.actions.map((action, index) => (
-									<Button
-										key={`action-${compId}-${index}`}
-										block={action}
-										color="secondary"
-										radius="md"
-										size="sm"
-									/>
-								))}
-							</div>
+							<Actions
+								block={{
+									items: actionItems,
+								}}
+								className={styles.actions_desktop}
+							/>
 						) : null}
 					</>
 				) : null}
@@ -189,16 +200,12 @@ export default function Header({ site, ...props }: HeaderProps) {
 								</ul>
 							) : null}
 							{site?.actions && site.actions.length ? (
-								<div className={styles.actions_mobile}>
-									{site.actions?.map((action, index) => (
-										<Button
-											key={`action-${compId}-${index}`}
-											block={action}
-											color="secondary"
-											size="sm"
-										/>
-									))}
-								</div>
+								<Actions
+									block={{
+										items: actionItems,
+									}}
+									className={styles.actions_mobile}
+								/>
 							) : null}
 						</nav>
 					)}

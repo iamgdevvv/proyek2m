@@ -102,6 +102,7 @@ export const Services: CollectionConfig = {
 								'listingTeam',
 								'listingTemplate',
 								'media',
+								'showReusable',
 								'solutions',
 								'socialMap',
 								'spacing',

@@ -22,10 +22,8 @@ export const seoSchema = ({ data, collection, site }: SeoDts): Graph => {
 		if (collection === 'pages' && data.slug === slugHomepage) {
 			graph.push(organizationSchema(site))
 			graph.push(localBusinessSchema(site))
-		} else if (collection === 'clients') {
-			graph.push(breadcrumbSchema({ data, collection, site }))
 		} else {
-			graph.push(breadcrumbSchema({ data, collection, site }))
+			graph.push(breadcrumbSchema({ data, collection, site } as SeoDts))
 		}
 	}
 

@@ -88,6 +88,7 @@ export interface Config {
     clientStorySlider: ClientStorySlider;
     clientStoryTeams: ClientStoryTeams;
     collapsibleTab: CollapsibleTab;
+    showReusable: ShowReusable;
     featuredListingClient: FeaturedListingClient;
     headingListing: HeadingListing;
     listingClient: ListingClient;
@@ -1296,6 +1297,7 @@ export interface Page {
         | ListingTeam
         | ListingTemplate
         | Media
+        | ShowReusable
         | Solutions
         | SocialMap
         | Spacing
@@ -1757,6 +1759,7 @@ export interface Client {
         | ListingTeam
         | ListingTemplate
         | Media
+        | ShowReusable
         | Solutions
         | SocialMap
         | Spacing
@@ -2223,6 +2226,7 @@ export interface Template {
         | ListingTeam
         | ListingTemplate
         | Media
+        | ShowReusable
         | Solutions
         | SocialMap
         | Spacing
@@ -3348,6 +3352,7 @@ export interface Team {
         | ListingTeam
         | ListingTemplate
         | Media
+        | ShowReusable
         | Solutions
         | SocialMap
         | Spacing
@@ -7178,6 +7183,7 @@ export interface Post {
         | ListingTeam
         | ListingTemplate
         | Media
+        | ShowReusable
         | Solutions
         | SocialMap
         | Spacing
@@ -8119,6 +8125,7 @@ export interface Service {
         | ListingTeam
         | ListingTemplate
         | Media
+        | ShowReusable
         | Solutions
         | SocialMap
         | Spacing
@@ -8597,6 +8604,65 @@ export interface ListingTemplate {
   id?: string | null;
   blockName?: string | null;
   blockType: 'listingTemplate';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "showReusable".
+ */
+export interface ShowReusable {
+  reusable?: (number | null) | Reusable;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'showReusable';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reusables".
+ */
+export interface Reusable {
+  id: number;
+  content?:
+    | (
+        | Actions
+        | BaseContent
+        | CardForm
+        | ClientStory
+        | ClientStorySlider
+        | ClientStoryTeams
+        | CollapsibleTab
+        | ContentCards
+        | ContentIconGrid
+        | ContentMedia
+        | ContentMediaCard
+        | ContentCtaCard
+        | Divider
+        | FeaturedListingClient
+        | Gallery
+        | HeadingListing
+        | InsightDisplay
+        | ListingClient
+        | ListingFaq
+        | ListingPost
+        | ListingPostCategory
+        | ListingService
+        | ListingTeam
+        | ListingTemplate
+        | Media
+        | Solutions
+        | SocialMap
+        | Spacing
+        | Usp
+      )[]
+    | null;
+  title: string;
+  slug: string;
+  link?: string | null;
+  excerpt?: string | null;
+  featuredImage?: (number | null) | Asset;
+  publishedAt?: string | null;
+  author?: (number | null) | User;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -9623,55 +9689,6 @@ export interface Banner {
   id?: string | null;
   blockName?: string | null;
   blockType: 'banner';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "reusables".
- */
-export interface Reusable {
-  id: number;
-  content?:
-    | (
-        | Actions
-        | BaseContent
-        | CardForm
-        | ClientStory
-        | ClientStorySlider
-        | ClientStoryTeams
-        | CollapsibleTab
-        | ContentCards
-        | ContentIconGrid
-        | ContentMedia
-        | ContentMediaCard
-        | ContentCtaCard
-        | Divider
-        | FeaturedListingClient
-        | Gallery
-        | HeadingListing
-        | InsightDisplay
-        | ListingClient
-        | ListingFaq
-        | ListingPost
-        | ListingPostCategory
-        | ListingService
-        | ListingTeam
-        | ListingTemplate
-        | Media
-        | Solutions
-        | SocialMap
-        | Spacing
-        | Usp
-      )[]
-    | null;
-  title: string;
-  slug: string;
-  link?: string | null;
-  excerpt?: string | null;
-  featuredImage?: (number | null) | Asset;
-  publishedAt?: string | null;
-  author?: (number | null) | User;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

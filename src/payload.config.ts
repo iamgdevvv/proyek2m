@@ -61,6 +61,7 @@ import { ListingServiceBlock } from '$payload-blocks/ListingService'
 import { ListingTeamBlock } from '$payload-blocks/ListingTeam'
 import { ListingTemplateBlock } from '$payload-blocks/ListingTemplate'
 import { MediaBlock } from '$payload-blocks/Media'
+import { ShowReusableBlock } from '$payload-blocks/Reusable'
 import { SocialMapBlock } from '$payload-blocks/SocialMap'
 import { SolutionsBlock } from '$payload-blocks/Solutions'
 import { SpacingBlock } from '$payload-blocks/Spacing'
@@ -146,6 +147,7 @@ export default buildConfig({
 		ClientStorySliderBlock,
 		ClientStoryTeamsBlock,
 		CollapsibleTabBlock,
+		ShowReusableBlock,
 		FeaturedListingClientBlock,
 		HeadingListingBlock,
 		ListingClientBlock,

@@ -139,6 +139,7 @@ export const Templates: CollectionConfig = {
 								'listingTeam',
 								'listingTemplate',
 								'media',
+								'showReusable',
 								'solutions',
 								'socialMap',
 								'spacing',

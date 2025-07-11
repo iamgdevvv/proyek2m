@@ -223,6 +223,7 @@ export const Teams: CollectionConfig = {
 								'listingTeam',
 								'listingTemplate',
 								'media',
+								'showReusable',
 								'solutions',
 								'socialMap',
 								'spacing',

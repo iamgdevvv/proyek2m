@@ -104,6 +104,7 @@ export const Pages: CollectionConfig = {
 								'listingTeam',
 								'listingTemplate',
 								'media',
+								'showReusable',
 								'solutions',
 								'socialMap',
 								'spacing',

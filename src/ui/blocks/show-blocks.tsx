@@ -26,6 +26,7 @@ import ListingService from '$blocks/listing-service/server'
 import ListingTeam from '$blocks/listing-team/server'
 import ListingTemplate from '$blocks/listing-template/server'
 import Media from '$blocks/media'
+import ShowReusable from '$blocks/show-reusable'
 import SocialMap from '$blocks/social-map'
 import Solutions from '$blocks/solutions'
 import Spacing from '$blocks/spacing'
@@ -333,6 +334,17 @@ export default function ShowBlocks({
 		if (block.blockType === 'media') {
 			return (
 				<Media
+					key={keyComp}
+					block={block}
+					withContainer={withContainer}
+					{...props}
+				/>
+			)
+		}
+
+		if (block.blockType === 'showReusable') {
+			return (
+				<ShowReusable
 					key={keyComp}
 					block={block}
 					withContainer={withContainer}
