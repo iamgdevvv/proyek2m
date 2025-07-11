@@ -22,6 +22,10 @@ export type BannerProps = {
 export default function Banner({ block, ...props }: BannerProps) {
 	const bgImage = useBackgroundImage(block?.backgroundImage)
 
+	const align = useMemo(() => {
+		return block?.align || 'center'
+	}, [block])
+
 	const backgroundColor = useMemo(() => {
 		return {
 			...block?.backgroundColor,
@@ -51,7 +55,7 @@ export default function Banner({ block, ...props }: BannerProps) {
 			{...props}
 			role="banner"
 			data-slot="banner"
-			data-align={block.align || 'center'}
+			data-align={align}
 			className={cx(styles.banner, props.className)}
 			style={{
 				color: colorVars(block.textColor),
@@ -102,6 +106,7 @@ export default function Banner({ block, ...props }: BannerProps) {
 					<Actions
 						block={{
 							items: actionItems,
+							align,
 						}}
 						className="mt-xl"
 					/>

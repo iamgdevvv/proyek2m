@@ -203,6 +203,7 @@ export default function Header({ site, ...props }: HeaderProps) {
 								<Actions
 									block={{
 										items: actionItems,
+										direction: 'column',
 									}}
 									className={styles.actions_mobile}
 								/>

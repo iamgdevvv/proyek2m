@@ -15,6 +15,10 @@ export type ButtonProps = {
 } & ButtonPropsMantine
 
 export default function Button({ block, className, ...props }: ButtonProps) {
+	if (!block?.label) {
+		return null
+	}
+
 	if (block?.link?.href) {
 		return (
 			<ButtonWrapper
