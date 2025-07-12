@@ -1,4 +1,5 @@
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Suspense, type ReactNode } from 'react'
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 					</Suspense>
 					{children}
 				</MantineProvider>
+				<SpeedInsights />
 			</body>
 		</html>
 	)
