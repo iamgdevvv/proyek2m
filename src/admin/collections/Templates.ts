@@ -4,7 +4,6 @@ import { BannerBlock } from '$payload-blocks/Banner'
 import { afterReadHookLink } from '$payload-fields/link'
 import { metafield } from '$payload-fields/metadata'
 import { authenticated, authenticatedActionRole } from '$payload-libs/access-rules'
-import { templateBuiltWith } from '$payload-libs/enum'
 import { revalidateChange, revalidateDelete } from '$payload-libs/hooks/revalidate'
 import { generatePreviewPath } from '$payload-libs/preview-path'
 
@@ -85,13 +84,6 @@ export const Templates: CollectionConfig = {
 									},
 								},
 							],
-						},
-						{
-							name: 'builtWith',
-							type: 'select',
-							enumName: 'tplcbw',
-							hasMany: true,
-							options: templateBuiltWith,
 						},
 					],
 				},

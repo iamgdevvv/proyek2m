@@ -1798,22 +1798,6 @@ export interface Template {
   id: number;
   previewUrl?: string | null;
   estimatedHours?: number | null;
-  builtWith?:
-    | (
-        | 'nextjs'
-        | 'nuxtjs'
-        | 'astro'
-        | 'wordpress'
-        | 'react'
-        | 'vuejs'
-        | 'svelte'
-        | 'payloadcms'
-        | 'keystatic'
-        | 'tailwindcss'
-        | 'mantineui'
-        | 'shadcnui'
-      )[]
-    | null;
   banner?: {
     type?: ('detail' | 'none') | null;
     align?: ('center' | 'left' | 'right') | null;
@@ -10205,7 +10189,6 @@ export interface ServicesSelect<T extends boolean = true> {
 export interface TemplatesSelect<T extends boolean = true> {
   previewUrl?: T;
   estimatedHours?: T;
-  builtWith?: T;
   banner?:
     | T
     | {
