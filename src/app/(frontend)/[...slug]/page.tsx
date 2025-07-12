@@ -13,7 +13,13 @@ import {
 	slugTemplates,
 } from '$modules/vars'
 import { generateMeta } from '$payload-libs/meta-utils'
-import { getAuthUser, getSiteGlobal } from '$payload-libs/server/repos'
+import {
+	getAuthUser,
+	getSiteGlobal,
+	pageSitemap,
+	serviceSitemap,
+	templateSitemap,
+} from '$payload-libs/server/repos'
 import type { Client, Page, Post, PostCategory, Team, Template } from '$payload-types'
 import { seoSchema } from '$seo/index'
 import {
@@ -36,7 +42,19 @@ type Args = {
 	}>
 }
 
-export const dynamic = 'force-dynamic' // Force dynamic rendering for this page
+// export const dynamic = 'force-dynamic' // Force dynamic rendering for this page
+
+export const dynamic = 'force-static'
+export const preferredRegion = ['sin1']
+
+// Next.js will invalidate the cache when a
+// request comes in, at most once every 60 seconds.
+export const revalidate = 86_400
+
+// We'll prerender only the params from `generateStaticParams` at build time.
+// If a request comes in for a path that hasn't been generated,
+// Next.js will server-render the page on-demand.
+export const dynamicParams = true
 
 export default async function Page({ params: paramsPromise }: Args) {
 	const { isEnabled: draft } = await draftMode()
@@ -277,4 +295,35 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 
 		return {}
 	}
+}
+
+export async function generateStaticParams() {
+	// const pages = await pageSitemap()
+	// const posts = await postSitemap()
+	// const postCategories = await postCategorySitemap()
+	// const clients = await clientSitemap()
+	// const teams = await teamSitemap()
+	// const teamPositions = await teamPositionSitemap()
+	// const templates = await templateSitemap()
+	// const services = await serviceSitemap()
+
+	const [pages, templates, services] = await Promise.all([
+		await pageSitemap(),
+		await templateSitemap(),
+		await serviceSitemap(),
+	])
+
+	return [...pages, ...templates, ...services].map((doc) => {
+		if (doc.link) {
+			const slugs = doc.link.split('/').filter(Boolean)
+
+			return {
+				slug: slugs.length ? slugs : [slugHomepage],
+			}
+		}
+
+		return {
+			slug: [doc.slug],
+		}
+	})
 }

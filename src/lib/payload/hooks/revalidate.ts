@@ -1,5 +1,5 @@
 'use server'
-import { revalidateTag } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import type {
 	CollectionAfterChangeHook,
 	CollectionAfterDeleteHook,
@@ -15,6 +15,7 @@ export const revalidateChange: CollectionAfterChangeHook<Post> = async ({
 	if (!context.disableRevalidate) {
 		revalidateTag('collection')
 		revalidateTag('sitemap')
+		revalidatePath('/', 'layout')
 	}
 
 	return doc
@@ -27,6 +28,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<Post> = async ({
 	if (!context.disableRevalidate) {
 		revalidateTag('collection')
 		revalidateTag('sitemap')
+		revalidatePath('/', 'layout')
 	}
 
 	return doc
@@ -38,6 +40,7 @@ export const revalidateChangeStatic: CollectionAfterChangeHook<Post> = async ({
 }) => {
 	if (!context.disableRevalidate) {
 		revalidateTag('collection')
+		revalidatePath('/', 'layout')
 	}
 
 	return doc
@@ -49,6 +52,7 @@ export const revalidateDeleteStatic: CollectionAfterDeleteHook<Post> = async ({
 }) => {
 	if (!context.disableRevalidate) {
 		revalidateTag('collection')
+		revalidatePath('/', 'layout')
 	}
 
 	return doc
@@ -57,5 +61,6 @@ export const revalidateDeleteStatic: CollectionAfterDeleteHook<Post> = async ({
 export const revalidateGlobal: GlobalAfterChangeHook = async ({ context }) => {
 	if (!context.disableRevalidate) {
 		revalidateTag('global')
+		revalidatePath('/', 'layout')
 	}
 }

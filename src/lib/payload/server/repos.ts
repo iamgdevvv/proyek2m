@@ -127,6 +127,7 @@ export const pageSitemap = async () => {
 				title: true,
 				slug: true,
 				link: true,
+				parentPage: true,
 			},
 		})
 
@@ -181,6 +182,7 @@ export const teamSitemap = async () => {
 				title: true,
 				slug: true,
 				link: true,
+				positions: true,
 			},
 		})
 
@@ -227,6 +229,33 @@ export const templateSitemap = async () => {
 		const payload = await getPayload({ config: configPromise })
 		const posts = await payload.find({
 			collection: 'templates',
+			draft: false,
+			limit: 100000,
+			overrideAccess: false,
+			pagination: false,
+			select: {
+				title: true,
+				slug: true,
+				link: true,
+			},
+		})
+
+		return posts.docs
+	} catch (error) {
+		console.error('templateSitemap', { error })
+		logger.error('templateSitemap', { error })
+		return []
+	}
+}
+
+export const serviceSitemap = async () => {
+	'use cache'
+	try {
+		cacheTag('sitemap', 'sitemap:services')
+
+		const payload = await getPayload({ config: configPromise })
+		const posts = await payload.find({
+			collection: 'services',
 			draft: false,
 			limit: 100000,
 			overrideAccess: false,
