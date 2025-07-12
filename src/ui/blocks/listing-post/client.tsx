@@ -253,6 +253,16 @@ function ListingPostInner({
 				onSearch={handlerSearch}
 			/>
 
+			{!posts.length && block.showFilter ? (
+				<Text
+					c="dimmed"
+					ta="center"
+					mt={0}
+				>
+					Blog tidak ditemukan
+				</Text>
+			) : null}
+
 			{block.pagination === 'infinite-scroll' ? (
 				<ListingInfiniteScroll
 					column={column}

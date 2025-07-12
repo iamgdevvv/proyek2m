@@ -213,6 +213,16 @@ function ListingFaqInner({
 				onSearch={handlerSearch}
 			/>
 
+			{!faqs.length && block.showFilter ? (
+				<Text
+					c="dimmed"
+					ta="center"
+					mt={0}
+				>
+					FAQ tidak ditemukan
+				</Text>
+			) : null}
+
 			<div className={styles.listing}>
 				<Accordion
 					variant="contained"

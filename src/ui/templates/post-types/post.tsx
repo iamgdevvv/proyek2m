@@ -67,6 +67,7 @@ export default function PostTemplate({ data, site }: Props) {
 											? data.category
 											: data.category.id,
 									],
+									total: 3,
 								}}
 								queried={data}
 							/>

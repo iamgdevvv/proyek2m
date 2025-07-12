@@ -28,7 +28,7 @@ export const Templates: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: ['title', 'slug', 'updatedAt', 'author'],
+		defaultColumns: ['title', 'slug', 'services', 'updatedAt', 'author'],
 		livePreview: {
 			url: ({ data, req }) =>
 				generatePreviewPath({
@@ -66,6 +66,10 @@ export const Templates: CollectionConfig = {
 				{
 					label: 'General',
 					fields: [
+						{
+							name: 'available',
+							type: 'checkbox',
+						},
 						{
 							type: 'row',
 							fields: [

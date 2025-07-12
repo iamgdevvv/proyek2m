@@ -257,6 +257,16 @@ function ListingClientInner({
 				onSearch={handlerSearch}
 			/>
 
+			{!clients.length && block.showFilter ? (
+				<Text
+					c="dimmed"
+					ta="center"
+					mt={0}
+				>
+					Klien2M tidak ditemukan
+				</Text>
+			) : null}
+
 			{block.pagination === 'infinite-scroll' ? (
 				<ListingInfiniteScroll
 					column={column}

@@ -9,7 +9,7 @@ export const Faqs: CollectionConfig = {
 	dbName: 'fqc',
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: ['title', 'updatedAt', 'author'],
+		defaultColumns: ['title', 'type', 'updatedAt', 'author'],
 	},
 	access: {
 		create: authenticated,

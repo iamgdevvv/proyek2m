@@ -228,6 +228,16 @@ function ListingTemplateInner({
 				onSearch={handlerSearch}
 			/>
 
+			{!templates.length && block.showFilter ? (
+				<Text
+					c="dimmed"
+					ta="center"
+					mt={0}
+				>
+					Template tidak ditemukan
+				</Text>
+			) : null}
+
 			{block.pagination === 'infinite-scroll' ? (
 				<ListingInfiniteScroll
 					column={column}

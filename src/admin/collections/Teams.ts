@@ -31,7 +31,7 @@ export const Teams: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: ['title', 'slug', 'updatedAt', 'user'],
+		defaultColumns: ['title', 'slug', 'positions', 'updatedAt', 'user'],
 		livePreview: {
 			url: ({ data, req }) =>
 				generatePreviewPath({

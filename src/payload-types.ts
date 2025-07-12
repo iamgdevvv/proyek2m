@@ -1796,6 +1796,7 @@ export interface Client {
  */
 export interface Template {
   id: number;
+  available?: boolean | null;
   previewUrl?: string | null;
   estimatedHours?: number | null;
   banner?: {
@@ -8116,6 +8117,17 @@ export interface Service {
         | Usp
       )[]
     | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Asset;
+    schemaType?: ('WebPage' | 'AboutPage' | 'ContactPage' | 'FAQPage' | 'ProfilePage' | 'SearchResultsPage') | null;
+    robots?: string | null;
+    keywords?: string | null;
+  };
   title: string;
   slug: string;
   link?: string | null;
@@ -8548,6 +8560,17 @@ export interface TeamPosition {
       general?: (number | null) | Asset;
       mobile?: (number | null) | Asset;
     };
+  };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Asset;
+    schemaType?: ('WebPage' | 'AboutPage' | 'ContactPage' | 'FAQPage' | 'ProfilePage' | 'SearchResultsPage') | null;
+    robots?: string | null;
+    keywords?: string | null;
   };
   title: string;
   slug: string;
@@ -10171,6 +10194,16 @@ export interface ServicesSelect<T extends boolean = true> {
             };
       };
   content?: T | {};
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        schemaType?: T;
+        robots?: T;
+        keywords?: T;
+      };
   title?: T;
   slug?: T;
   link?: T;
@@ -10187,6 +10220,7 @@ export interface ServicesSelect<T extends boolean = true> {
  * via the `definition` "templates_select".
  */
 export interface TemplatesSelect<T extends boolean = true> {
+  available?: T;
   previewUrl?: T;
   estimatedHours?: T;
   banner?:
@@ -10531,6 +10565,16 @@ export interface TeamPositionsSelect<T extends boolean = true> {
               general?: T;
               mobile?: T;
             };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        schemaType?: T;
+        robots?: T;
+        keywords?: T;
       };
   title?: T;
   slug?: T;

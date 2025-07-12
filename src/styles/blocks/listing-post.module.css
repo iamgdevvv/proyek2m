@@ -3,6 +3,10 @@
 .listing {
 	@apply grid grid-cols-1 gap-5;
 	@apply sm:grid-cols-2 md:grid-cols-[repeat(var(--column),minmax(0,1fr))] md:gap-[var(--gap)] md:gap-y-[var(--gap-y)];
+
+	&[class*='infinite-scroll-component'] {
+		@apply !overflow-visible;
+	}
 }
 
 .filter {

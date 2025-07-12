@@ -243,6 +243,16 @@ function ListingTeamInner({
 				onSearch={handlerSearch}
 			/>
 
+			{!teams.length && block.showFilter ? (
+				<Text
+					c="dimmed"
+					ta="center"
+					mt={0}
+				>
+					Warga2M tidak ditemukan
+				</Text>
+			) : null}
+
 			{block.pagination === 'infinite-scroll' ? (
 				<ListingInfiniteScroll
 					column={column}

@@ -191,7 +191,16 @@ export default buildConfig({
 	plugins: [
 		payloadCloudPlugin(),
 		seoPlugin({
-			collections: ['clients', 'pages', 'posts', 'postCategories', 'teams', 'templates'],
+			collections: [
+				'clients',
+				'pages',
+				'posts',
+				'postCategories',
+				'teams',
+				'teamPositions',
+				'services',
+				'templates',
+			],
 			uploadsCollection: 'asset',
 			tabbedUI: true,
 			fields: (args) => {
