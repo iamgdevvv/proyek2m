@@ -4,7 +4,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"build": "npm run generate:importmap && npm run generate:types && cross-env NODE_OPTIONS=--no-deprecation next build --turbopack",
+		"build": "npm run generate:importmap && npm run generate:types && cross-env NODE_OPTIONS=--no-deprecation next build",
 		"dev": "npm run generate:importmap && npm run mantine::generate && cross-env NODE_OPTIONS=--no-deprecation next dev --turbopack",
 		"devsafe": "rm -rf .next && npm run generate:importmap &&  npm run generate:importmap && npm run generate:types && cross-env NODE_OPTIONS=--no-deprecation next dev --turbopack",
 		"generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
