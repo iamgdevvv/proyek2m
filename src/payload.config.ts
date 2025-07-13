@@ -220,7 +220,7 @@ export default buildConfig({
 			},
 			generateTitle: async ({ doc }) => {
 				const siteConfig = await getSiteGlobal()
-				return doc?.title + (siteConfig?.title ? ` | ${siteConfig.title}` : '')
+				return doc?.title + (siteConfig?.title ? ` – ${siteConfig.title}` : '')
 			},
 			generateDescription: ({ doc }) => doc?.excerpt || '',
 		}),

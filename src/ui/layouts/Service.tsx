@@ -50,7 +50,7 @@ export function ServiceGrid({ data, ...props }: ServiceGridProps) {
 					size="sm"
 					c="dimmed"
 					mt="md"
-					className="line-clamp-4"
+					lineClamp={6}
 				>
 					{data.excerpt}
 				</Text>

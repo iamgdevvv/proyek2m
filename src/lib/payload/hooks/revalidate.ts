@@ -16,6 +16,11 @@ export const revalidateChange: CollectionAfterChangeHook<Post> = async ({
 		revalidateTag('collection')
 		revalidateTag('sitemap')
 		revalidatePath('/', 'layout')
+
+		console.log({
+			revalidateTag: ['collection', 'sitemap'],
+			revalidatePath: ['/', 'layout'],
+		})
 	}
 
 	return doc
@@ -29,6 +34,11 @@ export const revalidateDelete: CollectionAfterDeleteHook<Post> = async ({
 		revalidateTag('collection')
 		revalidateTag('sitemap')
 		revalidatePath('/', 'layout')
+
+		console.log({
+			revalidateTag: ['collection', 'sitemap'],
+			revalidatePath: ['/', 'layout'],
+		})
 	}
 
 	return doc
@@ -41,6 +51,11 @@ export const revalidateChangeStatic: CollectionAfterChangeHook<Post> = async ({
 	if (!context.disableRevalidate) {
 		revalidateTag('collection')
 		revalidatePath('/', 'layout')
+
+		console.log({
+			revalidateTag: ['collection'],
+			revalidatePath: ['/', 'layout'],
+		})
 	}
 
 	return doc
@@ -53,6 +68,11 @@ export const revalidateDeleteStatic: CollectionAfterDeleteHook<Post> = async ({
 	if (!context.disableRevalidate) {
 		revalidateTag('collection')
 		revalidatePath('/', 'layout')
+
+		console.log({
+			revalidateTag: ['collection'],
+			revalidatePath: ['/', 'layout'],
+		})
 	}
 
 	return doc
@@ -62,5 +82,10 @@ export const revalidateGlobal: GlobalAfterChangeHook = async ({ context }) => {
 	if (!context.disableRevalidate) {
 		revalidateTag('global')
 		revalidatePath('/', 'layout')
+
+		console.log({
+			revalidateTag: ['global'],
+			revalidatePath: ['/', 'layout'],
+		})
 	}
 }

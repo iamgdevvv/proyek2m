@@ -6,7 +6,7 @@ import BaseContent from '$blocks/base-content'
 import { MediaInner } from '$blocks/media'
 import { FadeContainer, FadeDiv } from '$components/Fade'
 import { StyleGap } from '$components/Style'
-import type { ContentMedia as ContentMediaBlock } from '$payload-types'
+import type { Actions as ActionsBlock, ContentMedia as ContentMediaBlock } from '$payload-types'
 import { slugify } from '$utils/common'
 import { cx, gapVars } from '$utils/styles'
 
@@ -56,6 +56,13 @@ function ContentMediaInner({ block, ...props }: Omit<ContentMediaProps, 'withCon
 		}
 	}, [block.gap])
 
+	const actionItems = useMemo((): ActionsBlock['items'] => {
+		return block.actions?.map((action, index) => ({
+			...action,
+			variant: action.variant || index !== 0 ? 'light' : 'filled',
+		}))
+	}, [block.actions])
+
 	return (
 		<div
 			{...props}
@@ -76,7 +83,8 @@ function ContentMediaInner({ block, ...props }: Omit<ContentMediaProps, 'withCon
 				/>
 				<Actions
 					block={{
-						items: block.actions,
+						items: actionItems,
+						direction: 'column',
 					}}
 					className={styles.actions}
 				/>

@@ -37,7 +37,7 @@
 
 .title {
 	@apply mt-0;
-	@apply text-lg font-bold leading-snug line-clamp-2;
+	@apply text-lg font-bold leading-snug;
 	@apply hover:text-secondary;
 }
 

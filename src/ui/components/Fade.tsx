@@ -52,6 +52,7 @@ function FadeDiv({ children, ...props }: HTMLMotionProps<'div'>) {
 	const ref = useRef<HTMLDivElement>(null)
 	const inView = useInView(ref, {
 		once: true,
+		initial: false,
 	})
 
 	useShallowEffect(() => {
@@ -66,6 +67,7 @@ function FadeDiv({ children, ...props }: HTMLMotionProps<'div'>) {
 		<motion.div
 			{...props}
 			ref={ref}
+			data-slot="fade"
 			animate={controls}
 			variants={item}
 		>

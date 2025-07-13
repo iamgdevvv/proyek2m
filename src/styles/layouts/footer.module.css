@@ -36,8 +36,8 @@
 }
 
 .navigation {
-	@apply min-w-44 mt-10 pl-2;
-	@apply lg:mt-0 lg:pl-0;
+	@apply w-1/2 mt-10 pl-2;
+	@apply sm:w-auto sm:min-w-44 lg:mt-0 lg:pl-0;
 
 	.title_nav {
 		@apply text-base font-semibold;

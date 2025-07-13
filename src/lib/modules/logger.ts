@@ -20,8 +20,6 @@ export const logger = pino({
 					detail: rest,
 				})
 
-				console.log({ logData })
-
 				if (process.env.NODE_ENV !== 'production') {
 					logStream.write(`${logData}\n`)
 				}

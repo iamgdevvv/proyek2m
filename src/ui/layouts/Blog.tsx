@@ -57,6 +57,7 @@ export function BlogCard({ data, ...props }: BlogCardProps) {
 			<div className={stylesBlogCard.content}>
 				<Title
 					order={5}
+					lineClamp={2}
 					className={stylesBlogCard.title}
 				>
 					<Link href={collectionLink(data.link)}>{data.title}</Link>
@@ -66,7 +67,7 @@ export function BlogCard({ data, ...props }: BlogCardProps) {
 					<Text
 						size="sm"
 						c="dimmed"
-						className="line-clamp-4"
+						lineClamp={5}
 					>
 						{data.excerpt}
 					</Text>

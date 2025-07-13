@@ -10,6 +10,7 @@
 		@apply absolute top-3 right-3 z-1;
 		@apply size-10;
 		@apply text-secondary;
+		@apply opacity-40;
 	}
 }
 

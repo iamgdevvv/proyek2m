@@ -42,18 +42,6 @@ type Args = {
 	}>
 }
 
-// export const dynamic = 'force-dynamic' // Force dynamic rendering for this page
-
-export const dynamic = 'force-static'
-export const preferredRegion = ['sin1']
-
-// Next.js will invalidate the cache when a
-// request comes in, at most once every 60 seconds.
-export const revalidate = 86_400
-
-// We'll prerender only the params from `generateStaticParams` at build time.
-// If a request comes in for a path that hasn't been generated,
-// Next.js will server-render the page on-demand.
 export const dynamicParams = true
 
 export default async function Page({ params: paramsPromise }: Args) {
@@ -240,9 +228,9 @@ export default async function Page({ params: paramsPromise }: Args) {
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-	try {
-		const { slug = [slugHomepage] } = await paramsPromise
+	const { slug = [slugHomepage] } = await paramsPromise
 
+	try {
 		// Don't generate metadata for Admin routes, API routes and public files
 		if (slug[0] === 'admin' || slug[0] === 'api' || slug.join('/').includes('.')) {
 			return {}
@@ -290,23 +278,14 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 
 		return generateMeta(doc, siteConfig)
 	} catch (error) {
-		console.error('generateMetadata', { error })
-		logger.error('generateMetadata', { error })
+		console.error('generateMetadata', { slug, error })
+		logger.error('generateMetadata', { slug, error })
 
 		return {}
 	}
 }
 
 export async function generateStaticParams() {
-	// const pages = await pageSitemap()
-	// const posts = await postSitemap()
-	// const postCategories = await postCategorySitemap()
-	// const clients = await clientSitemap()
-	// const teams = await teamSitemap()
-	// const teamPositions = await teamPositionSitemap()
-	// const templates = await templateSitemap()
-	// const services = await serviceSitemap()
-
 	const [pages, templates, services] = await Promise.all([
 		await pageSitemap(),
 		await templateSitemap(),

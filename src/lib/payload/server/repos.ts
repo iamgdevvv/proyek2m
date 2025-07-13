@@ -73,6 +73,7 @@ export const postSitemap = async () => {
 				slug: true,
 				link: true,
 				category: true,
+				updatedAt: true,
 			},
 		})
 
@@ -100,6 +101,7 @@ export const clientSitemap = async () => {
 				title: true,
 				slug: true,
 				link: true,
+				updatedAt: true,
 			},
 		})
 
@@ -128,6 +130,7 @@ export const pageSitemap = async () => {
 				slug: true,
 				link: true,
 				parentPage: true,
+				updatedAt: true,
 			},
 		})
 
@@ -155,6 +158,7 @@ export const postCategorySitemap = async () => {
 				title: true,
 				slug: true,
 				link: true,
+				updatedAt: true,
 			},
 		})
 
@@ -183,6 +187,7 @@ export const teamSitemap = async () => {
 				slug: true,
 				link: true,
 				positions: true,
+				updatedAt: true,
 			},
 		})
 
@@ -210,6 +215,7 @@ export const teamPositionSitemap = async () => {
 				title: true,
 				slug: true,
 				link: true,
+				updatedAt: true,
 			},
 		})
 
@@ -237,6 +243,7 @@ export const templateSitemap = async () => {
 				title: true,
 				slug: true,
 				link: true,
+				updatedAt: true,
 			},
 		})
 
@@ -264,6 +271,7 @@ export const serviceSitemap = async () => {
 				title: true,
 				slug: true,
 				link: true,
+				updatedAt: true,
 			},
 		})
 

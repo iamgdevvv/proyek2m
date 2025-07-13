@@ -8,9 +8,13 @@
 		@apply w-[var(--filter-size)];
 
 		& + .listing {
-			@apply w-[calc(100%-var(--filter-size))] pl-10;
+			@apply w-[calc(100%-var(--filter-size))] pl-10 mx-0;
 		}
 	}
+}
+
+.listing {
+	@apply w-3xl max-w-full mx-auto;
 }
 
 .filter {

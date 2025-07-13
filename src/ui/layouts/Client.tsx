@@ -1,5 +1,6 @@
 'use client'
 import { Card, Skeleton, Stack, Text, Title } from '@mantine/core'
+import { Quote } from 'lucide-react'
 import { type ComponentProps, type HTMLAttributes } from 'react'
 
 import Image from '$components/Image'
@@ -12,7 +13,6 @@ import { cx } from '$utils/styles'
 import stylesClientCard from '$styles/layouts/client-card.module.css'
 import stylesClientLogoCard from '$styles/layouts/client-logocard.module.css'
 import stylesClientStoryCard from '$styles/layouts/client-storycard.module.css'
-import { Quote } from 'lucide-react'
 
 export type ClientCardProps = {
 	data: Pick<
@@ -59,6 +59,7 @@ export function ClientCard({ data, ...props }: ClientCardProps) {
 				</Link>
 				<Title
 					order={5}
+					lineClamp={2}
 					className={stylesClientCard.title}
 				>
 					<Link href={collectionLink(data.link)}>{data.name || data.title}</Link>
@@ -66,6 +67,7 @@ export function ClientCard({ data, ...props }: ClientCardProps) {
 				{data.story || data.excerpt ? (
 					<Text
 						size="sm"
+						lineClamp={8}
 						className={stylesClientCard.story}
 					>
 						{data.story || data.excerpt}
@@ -272,12 +274,14 @@ export function ClientStoryCard({ data, ...props }: ClientStoryCardProps) {
 			<Quote className={stylesClientStoryCard.icon} />
 			<Title
 				order={5}
+				lineClamp={2}
 				className={stylesClientStoryCard.title}
 			>
 				<Link href={collectionLink(data.link)}>{data.name}</Link>
 			</Title>
 			<Text
 				size="sm"
+				lineClamp={6}
 				className={stylesClientStoryCard.story}
 			>
 				{data.story}

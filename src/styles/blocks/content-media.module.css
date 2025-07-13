@@ -9,7 +9,7 @@
 	}
 
 	.actions {
-		@apply mt-xs;
+		@apply mt-lg;
 	}
 
 	.content {
