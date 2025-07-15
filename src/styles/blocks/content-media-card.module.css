@@ -22,7 +22,7 @@
 
 	&[data-desktop-position='content-media'] {
 		.content {
-			@apply md:pr-[var(--gap)];
+			@apply md:pr-[var(--gap)] md:-order-2;
 		}
 	}
 
@@ -37,7 +37,7 @@
 	}
 
 	&[data-mobile-position='media-content'] .media {
-		@apply -order-1 md:order-2;
+		@apply -order-1;
 	}
 
 	@media all and (max-width: theme(--breakpoint-sm)) {

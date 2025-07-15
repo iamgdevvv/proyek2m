@@ -34,10 +34,7 @@ export default function ContentIconGrid({ block, withContainer, ...props }: Cont
 		>
 			<FadeContainer className="container">
 				<FadeDiv>
-					<ContentIconGridInner
-						block={block}
-						className="container"
-					/>
+					<ContentIconGridInner block={block} />
 				</FadeDiv>
 			</FadeContainer>
 		</section>

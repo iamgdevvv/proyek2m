@@ -1,8 +1,7 @@
-'use client'
 import { type HTMLAttributes } from 'react'
 
+import ShowBlocks from '$blocks/show-blocks'
 import type { ShowReusable as ShowReusableBlock } from '$payload-types'
-import ShowBlocks from './show-blocks'
 
 export type ShowReusableProps = {
 	block: ShowReusableBlock

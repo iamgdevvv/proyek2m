@@ -289,9 +289,9 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 
 export async function generateStaticParams() {
 	const [pages, templates, services] = await Promise.all([
-		await pageSitemap(),
-		await templateSitemap(),
-		await serviceSitemap(),
+		pageSitemap(),
+		templateSitemap(),
+		serviceSitemap(),
 	])
 
 	return [...pages, ...templates, ...services].map((doc) => {
