@@ -20,6 +20,7 @@ export const queryListingTeam = async (
 ) => {
 	let sort: Sort | undefined = undefined
 	let search: OptionsQueryTeams['search'] = options?.search
+	let limit = options?.limit || block.total || 8
 	const teamIds: number[] = []
 	const positionIds: number[] = []
 	let gender: Team['gender'] = options?.filter?.gender
@@ -38,6 +39,8 @@ export const queryListingTeam = async (
 	}
 
 	if (block.type === 'selectedTeams' && block.selectedTeams && !options?.filter?.ids) {
+		limit = 100000
+
 		block.selectedTeams.forEach((team) => {
 			if (typeof team === 'number') {
 				teamIds.push(team)
@@ -87,7 +90,7 @@ export const queryListingTeam = async (
 		{
 			...options,
 			search,
-			limit: options?.limit || block.total || 8,
+			limit,
 			sort,
 			filter: {
 				...options?.filter,

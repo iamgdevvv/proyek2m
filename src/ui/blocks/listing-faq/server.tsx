@@ -19,6 +19,7 @@ export const queryListingFaq = async (
 ) => {
 	let sort: Sort | undefined = undefined
 	let search: OptionsQueryFaqs['search'] = options?.search
+	let limit = options?.limit || block.total || 6
 	const faqIds: number[] = []
 	const faqTypes: NonNullable<Faq['type']> = []
 
@@ -35,6 +36,7 @@ export const queryListingFaq = async (
 	}
 
 	if (block.type === 'selectedFaqs' && block.selectedFaqs && !options?.filter?.ids) {
+		limit = 100000
 		block.selectedFaqs.forEach((faq) => {
 			if (typeof faq === 'number') {
 				faqIds.push(faq)
@@ -62,7 +64,7 @@ export const queryListingFaq = async (
 		{
 			...options,
 			search,
-			limit: options?.limit || block.total || 6,
+			limit,
 			sort,
 			filter: {
 				...options?.filter,

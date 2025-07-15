@@ -21,6 +21,7 @@ export const queryListingTemplate = async (
 ) => {
 	let sort: Sort | undefined = undefined
 	let search: OptionsQueryTemplates['search'] = options?.search
+	let limit = options?.limit || block.total || 6
 	const templateIds: number[] = []
 	const serviceIds: number[] = []
 
@@ -37,6 +38,8 @@ export const queryListingTemplate = async (
 	}
 
 	if (block.type === 'selectedTemplates' && block.selectedTemplates && !options?.filter?.ids) {
+		limit = 100000
+
 		block.selectedTemplates.forEach((template) => {
 			if (typeof template === 'number') {
 				templateIds.push(template)
@@ -72,7 +75,7 @@ export const queryListingTemplate = async (
 		{
 			...options,
 			search,
-			limit: options?.limit || block.total || 6,
+			limit,
 			sort,
 			filter: {
 				...options?.filter,

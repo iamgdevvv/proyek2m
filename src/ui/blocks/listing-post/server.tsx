@@ -21,6 +21,7 @@ export const queryListingPost = async (
 ) => {
 	let sort: Sort | undefined = undefined
 	let search: OptionsQueryPosts['search'] = options?.search
+	let limit = options?.limit || block.total || 6
 	const postIds: number[] = []
 	const categoryIds: number[] = []
 	const teamIds: number[] = []
@@ -38,9 +39,7 @@ export const queryListingPost = async (
 	}
 
 	if (block.type === 'selectedPosts' && block.selectedPosts && !options?.filter?.ids) {
-		if (block.selectedPosts.length === 0) {
-			return null
-		}
+		limit = 100000
 
 		block.selectedPosts.forEach((post) => {
 			if (typeof post === 'number') {
@@ -49,6 +48,10 @@ export const queryListingPost = async (
 				postIds.push(post.id)
 			}
 		})
+
+		if (postIds.length === 0) {
+			return null
+		}
 	} else if (
 		block.type === 'selectedCategories' &&
 		block.selectedCategories &&
@@ -85,7 +88,7 @@ export const queryListingPost = async (
 		{
 			...options,
 			search,
-			limit: options?.limit || block.total || 6,
+			limit,
 			sort,
 			filter: {
 				...options?.filter,

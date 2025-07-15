@@ -20,6 +20,7 @@ export const queryListingService = async (
 ) => {
 	let sort: Sort | undefined = undefined
 	let search: OptionsQueryServices['search'] = options?.search
+	let limit = options?.limit || block.total || 100000
 	const serviceIds: number[] = []
 
 	if (options?.sort) {
@@ -35,6 +36,8 @@ export const queryListingService = async (
 	}
 
 	if (block.type === 'selectedServices' && block.selectedServices && !options?.filter?.ids) {
+		limit = 100000
+
 		block.selectedServices.forEach((service) => {
 			if (typeof service === 'number') {
 				serviceIds.push(service)
@@ -54,7 +57,7 @@ export const queryListingService = async (
 		{
 			...options,
 			search,
-			limit: options?.limit || block.total || 9999999,
+			limit,
 			sort,
 			filter: {
 				...options?.filter,

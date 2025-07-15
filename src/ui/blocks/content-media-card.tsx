@@ -73,8 +73,8 @@ function ContentMediaCardInner({ block, ...props }: Omit<ContentMediaCardProps, 
 			id={refId}
 			data-slot="content-media-card-inner"
 			data-align={block.align}
-			data-mobile-position={block.desktopPosition || 'media-content'}
-			data-desktop-position={block.mobilePosition || 'content-media'}
+			data-mobile-position={block.mobilePosition || 'media-content'}
+			data-desktop-position={block.desktopPosition || 'content-media'}
 			className={cx(styles.content_media, props.className)}
 			style={{
 				...props.style,

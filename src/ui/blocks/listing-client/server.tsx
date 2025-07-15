@@ -22,6 +22,7 @@ export const queryListingClient = async (
 ) => {
 	let sort: Sort | undefined = undefined
 	let search: OptionsQueryClients['search'] = options?.search
+	let limit = options?.limit || block.total || 6
 	const clientIds: number[] = []
 	const templateIds: number[] = []
 	const teamIds: number[] = []
@@ -39,6 +40,8 @@ export const queryListingClient = async (
 	}
 
 	if (block.type === 'selectedClients' && block.selectedClients && !options?.filter?.ids) {
+		limit = 100000
+
 		block.selectedClients.forEach((client) => {
 			if (typeof client === 'number') {
 				clientIds.push(client)
@@ -86,7 +89,7 @@ export const queryListingClient = async (
 		{
 			...options,
 			search,
-			limit: options?.limit || block.total || 6,
+			limit,
 			sort,
 			filter: {
 				...options?.filter,

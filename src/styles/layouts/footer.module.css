@@ -45,7 +45,7 @@
 	}
 
 	.menu_nav {
-		@apply text-sm text-[var(--gray-color)];
+		@apply text-sm text-gray;
 
 		li + li {
 			@apply mt-2;

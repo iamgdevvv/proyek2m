@@ -23,6 +23,7 @@ export const queryListingPostCategory = async (
 ) => {
 	let sort: Sort | undefined = undefined
 	let search: OptionsQueryPostCategories['search'] = options?.search
+	let limit = options?.limit || block.total || 100000
 	const categoryIds: number[] = []
 
 	if (options?.sort) {
@@ -38,6 +39,8 @@ export const queryListingPostCategory = async (
 	}
 
 	if (block.type === 'selectedCategories' && block.selectedCategories && !options?.filter?.ids) {
+		limit = 100000
+
 		block.selectedCategories.forEach((category) => {
 			if (typeof category === 'number') {
 				categoryIds.push(category)
@@ -57,7 +60,7 @@ export const queryListingPostCategory = async (
 		{
 			...options,
 			search,
-			limit: options?.limit || block.total || undefined,
+			limit,
 			sort,
 			filter: {
 				...options?.filter,

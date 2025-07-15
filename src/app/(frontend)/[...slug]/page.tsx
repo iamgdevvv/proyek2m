@@ -42,6 +42,8 @@ type Args = {
 	}>
 }
 
+export const dynamic = 'force-static'
+export const revalidate = 3600
 export const dynamicParams = true
 
 export default async function Page({ params: paramsPromise }: Args) {

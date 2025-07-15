@@ -69,8 +69,8 @@ function ContentMediaInner({ block, ...props }: Omit<ContentMediaProps, 'withCon
 			id={refId}
 			data-slot="content-media-inner"
 			data-align={block.align}
-			data-mobile-position={block.desktopPosition || 'media-content'}
-			data-desktop-position={block.mobilePosition || 'content-media'}
+			data-mobile-position={block.mobilePosition || 'media-content'}
+			data-desktop-position={block.desktopPosition || 'content-media'}
 			className={cx(styles.content_media, gapVars(gap)?.classNameWrapper, props.className)}
 		>
 			<div className={cx(styles.content, gapVars(gap)?.classNameInner)}>
