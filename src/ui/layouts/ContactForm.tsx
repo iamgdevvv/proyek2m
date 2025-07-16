@@ -1,5 +1,6 @@
 'use client'
 import {
+	Alert,
 	Button,
 	Checkbox,
 	CheckboxGroup,
@@ -15,6 +16,7 @@ import {
 } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { zod4Resolver } from 'mantine-form-zod-resolver'
+import { useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useId, useMemo, useState, type HTMLAttributes } from 'react'
 import { z, ZodObject } from 'zod/v4'
 
@@ -33,6 +35,7 @@ export type ContactFormType = {
 
 export default function ContactForm({ data, ...props }: ContactFormType) {
 	const compId = useId()
+	const searchParams = useSearchParams()
 	const router = useRouter()
 	const scrollTo = useWindowScrollTo()
 	const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -118,7 +121,6 @@ export default function ContactForm({ data, ...props }: ContactFormType) {
 	}, [data])
 
 	const form = useForm({
-		mode: 'uncontrolled',
 		validate: zod4Resolver(formSchema),
 	})
 
@@ -166,18 +168,26 @@ export default function ContactForm({ data, ...props }: ContactFormType) {
 	useEffect(() => {
 		if (typeof data === 'object' && data.fields) {
 			data.fields.forEach((field) => {
+				const defaultValueBySearchParam = searchParams.get(field.name)
+
 				if (field.blockType === 'checkboxOptions') {
-					if (field.defaultValue) {
+					if (defaultValueBySearchParam) {
+						form.setFieldValue(field.name, defaultValueBySearchParam.split(','))
+					} else if (field.defaultValue) {
 						form.setFieldValue(field.name, [field.defaultValue])
 					} else {
 						form.setFieldValue(field.name, [])
 					}
 				} else if (field.blockType === 'select' && field.multiple) {
-					if (field.defaultValue) {
+					if (defaultValueBySearchParam) {
+						form.setFieldValue(field.name, defaultValueBySearchParam.split(','))
+					} else if (field.defaultValue) {
 						form.setFieldValue(field.name, [field.defaultValue])
 					} else {
 						form.setFieldValue(field.name, [])
 					}
+				} else if (defaultValueBySearchParam) {
+					form.setFieldValue(field.name, defaultValueBySearchParam)
 				} else if (
 					'defaultValue' in field &&
 					typeof field.defaultValue !== 'undefined' &&
@@ -204,7 +214,14 @@ export default function ContactForm({ data, ...props }: ContactFormType) {
 	}
 
 	if (hasSuccessSend && data.confirmationType === 'message') {
-		return <Richtext data={data.confirmationMessage} />
+		return (
+			<Alert
+				title="Formulir berhasil dikirim"
+				color="green"
+			>
+				<Richtext data={data.confirmationMessage} />
+			</Alert>
+		)
 	}
 
 	return (

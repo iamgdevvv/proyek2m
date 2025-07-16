@@ -286,6 +286,7 @@ export const marginField = (_options?: StyleFieldBase): Field => {
 		type: 'group',
 		name: options.name,
 		admin: options.admin,
+		index: false,
 		fields: [
 			{
 				type: 'row',
@@ -346,6 +347,7 @@ export const paddingField = (_options?: StyleFieldBase): Field => {
 		type: 'group',
 		name: options.name,
 		admin: options.admin,
+		index: false,
 		fields: [
 			{
 				type: 'row',
@@ -406,6 +408,7 @@ export const gapField = (_options?: StyleFieldBase): Field => {
 		type: 'group',
 		name: options.name,
 		admin: options.admin,
+		index: false,
 		fields: [
 			{
 				type: 'row',
@@ -444,6 +447,7 @@ export const backgroundImageField = (_options?: Omit<StyleFieldBase, 'defaultVal
 		type: 'group',
 		name: options.name,
 		admin: options.admin,
+		index: false,
 		fields: [
 			{
 				type: 'row',
@@ -481,6 +485,7 @@ export const backgroundColorField = (_options?: StyleFieldBase): Field => {
 		type: 'group',
 		name: options.name,
 		admin: options.admin,
+		index: false,
 		fields: [
 			{
 				type: 'row',
@@ -551,6 +556,7 @@ export const roundedField = (_options?: StyleFieldBase): Field => {
 		type: 'group',
 		name: options.name,
 		admin: options.admin,
+		index: false,
 		fields: [
 			{
 				name: 'base',
@@ -670,6 +676,7 @@ export const textColorField = (_options?: StyleFieldBase): Field => {
 		type: 'group',
 		name: options.name,
 		admin: options.admin,
+		index: false,
 		fields: [
 			{
 				type: 'row',
@@ -719,6 +726,7 @@ export const objectFitField = (_options?: StyleFieldBase): Field => {
 	return {
 		type: 'select',
 		enumName: 'obfit',
+		index: false,
 		options: [
 			{
 				label: 'Cover',
@@ -742,6 +750,7 @@ export const aspectRatioField = (_options?: StyleFieldBase): Field => {
 	return {
 		type: 'select',
 		enumName: 'apcrio',
+		index: false,
 		options: [
 			{
 				label: '1/1',

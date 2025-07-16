@@ -1,5 +1,5 @@
 'use client'
-import { Anchor, Card, Group, Skeleton, Stack, Title } from '@mantine/core'
+import { Anchor, Card, Group, Skeleton, Stack, Text, Title } from '@mantine/core'
 import { useId, type ComponentProps, type HTMLAttributes } from 'react'
 
 import Image from '$components/Image'
@@ -58,7 +58,11 @@ export function TeamCard({ data, ...props }: TeamCardProps) {
 							if (typeof position !== 'object') return null
 
 							return (
-								<span key={`${compId}-position-${position.id}`}>
+								<Text
+									component="span"
+									ta="center"
+									key={`${compId}-position-${position.id}`}
+								>
 									<Anchor
 										component={Link}
 										href={collectionLink(position.link)}
@@ -68,7 +72,7 @@ export function TeamCard({ data, ...props }: TeamCardProps) {
 										{position.title}
 									</Anchor>
 									{index < data.positions!.length - 1 ? ', ' : ''}
-								</span>
+								</Text>
 							)
 						})}
 					</Group>
@@ -152,7 +156,11 @@ export function TeamGrid({ data, ...props }: TeamGridProps) {
 							if (typeof position !== 'object') return null
 
 							return (
-								<span key={`${compId}-position-${position.id}`}>
+								<Text
+									component="span"
+									ta="center"
+									key={`${compId}-position-${position.id}`}
+								>
 									<Anchor
 										component={Link}
 										href={collectionLink(position.link)}
@@ -162,7 +170,7 @@ export function TeamGrid({ data, ...props }: TeamGridProps) {
 										{position.title}
 									</Anchor>
 									{index < data.positions!.length - 1 ? ', ' : ''}
-								</span>
+								</Text>
 							)
 						})}
 					</Group>
