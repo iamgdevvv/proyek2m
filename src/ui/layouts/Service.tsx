@@ -1,5 +1,5 @@
 'use client'
-import { Button, Text, Title } from '@mantine/core'
+import { Button, Group, Skeleton, Stack, Text, Title } from '@mantine/core'
 import { ArrowUpRight } from 'lucide-react'
 import { type HTMLAttributes } from 'react'
 
@@ -56,16 +56,20 @@ export function ServiceGrid({ data, ...props }: ServiceGridProps) {
 				</Text>
 			) : null}
 
-			<Button
-				component={Link}
-				href={collectionLink(data.link)}
-				variant="subtle"
-				rightSection={<ArrowUpRight />}
-				mt="lg"
-				ml="auto"
+			<Group
+				justify="flex-end"
+				mt="auto"
+				pt="lg"
 			>
-				Baca selengkapnya
-			</Button>
+				<Button
+					component={Link}
+					href={collectionLink(data.link)}
+					variant="subtle"
+					rightSection={<ArrowUpRight />}
+				>
+					Baca selengkapnya
+				</Button>
+			</Group>
 		</div>
 	)
 }
@@ -75,6 +79,48 @@ export function SkeletonServiceGrid(props: Partial<ServiceGridProps>) {
 		<div
 			{...props}
 			className={cx(stylesServiceGrid.grid, props.className)}
-		></div>
+		>
+			<Skeleton
+				w="65%"
+				h={25}
+				mb="sm"
+				className={stylesServiceGrid.title}
+			/>
+			<Skeleton className={stylesServiceGrid.thumbnail} />
+
+			<Stack
+				w="100%"
+				gap={4}
+				mt="md"
+			>
+				<Skeleton
+					width="85%"
+					height={18}
+				/>
+				<Skeleton
+					width="80%"
+					height={18}
+				/>
+				<Skeleton
+					width="90%"
+					height={18}
+				/>
+				<Skeleton
+					width="60%"
+					height={18}
+				/>
+			</Stack>
+			<Group
+				justify="flex-end"
+				mt="auto"
+				pt="lg"
+			>
+				<Skeleton
+					width={162}
+					maw="80%"
+					height={36}
+				/>
+			</Group>
+		</div>
 	)
 }

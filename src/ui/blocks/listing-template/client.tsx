@@ -228,7 +228,7 @@ function ListingTemplateInner({
 				onSearch={handlerSearch}
 			/>
 
-			{!templates.length && block.showFilter ? (
+			{!templates.length && block.showFilter && !isLoading ? (
 				<Text
 					c="dimmed"
 					ta="center"

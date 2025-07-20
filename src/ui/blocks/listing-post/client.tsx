@@ -253,7 +253,7 @@ function ListingPostInner({
 				onSearch={handlerSearch}
 			/>
 
-			{!posts.length && block.showFilter ? (
+			{!posts.length && block.showFilter && !isLoading ? (
 				<Text
 					c="dimmed"
 					ta="center"

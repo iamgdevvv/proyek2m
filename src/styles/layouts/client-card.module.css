@@ -17,9 +17,10 @@
 
 	.thumbnail {
 		@apply relative overflow-hidden;
-		@apply w-1/2 min-h-md;
+		@apply w-1/2 h-full min-h-md;
 
 		img {
+			@apply absolute top-0 left-0 z-1;
 			@apply size-full;
 			@apply transition;
 		}

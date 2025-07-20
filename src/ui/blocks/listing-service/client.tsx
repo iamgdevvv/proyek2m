@@ -182,7 +182,7 @@ export function ListingServiceInner({
 				data={pagination}
 				loading={isLoading}
 				onPaging={handlerPagination}
-				className="mt-xl"
+				className="mt-10"
 			/>
 
 			<StyleGap
@@ -266,7 +266,7 @@ function ListingLoadMore({
 					/>
 				))}
 				<SkeletonItems
-					loading={loading}
+					loading={true}
 					total={column}
 				/>
 			</div>

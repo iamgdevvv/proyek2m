@@ -243,7 +243,7 @@ function ListingTeamInner({
 				onSearch={handlerSearch}
 			/>
 
-			{!teams.length && block.showFilter ? (
+			{!teams.length && block.showFilter && !isLoading ? (
 				<Text
 					c="dimmed"
 					ta="center"

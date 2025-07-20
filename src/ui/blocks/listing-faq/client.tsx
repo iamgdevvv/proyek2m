@@ -213,7 +213,7 @@ function ListingFaqInner({
 				onSearch={handlerSearch}
 			/>
 
-			{!faqs.length && block.showFilter ? (
+			{!faqs.length && block.showFilter && !isLoading ? (
 				<Text
 					c="dimmed"
 					ta="center"

@@ -257,7 +257,7 @@ function ListingClientInner({
 				onSearch={handlerSearch}
 			/>
 
-			{!clients.length && block.showFilter ? (
+			{!clients.length && block.showFilter && !isLoading ? (
 				<Text
 					c="dimmed"
 					ta="center"
