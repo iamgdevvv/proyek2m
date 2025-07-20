@@ -255,6 +255,14 @@ img {
 				@apply mt-0;
 			}
 		}
+
+		.mantine-Accordion-control:not(:disabled, [data-disabled]):hover {
+			@apply bg-transparent;
+		}
+
+		.mantine-Accordion-panel {
+			@apply pt-2;
+		}
 	}
 
 	.mantine-Accordion-item {
@@ -280,6 +288,16 @@ img {
 		[class*='mantine-Accordion-icon'] {
 			@apply mt-0.5;
 		}
+	}
+}
+
+.mantine-Accordion-content {
+	p {
+		@apply mb-xs;
+	}
+
+	& > *:last-child {
+		@apply mb-0;
 	}
 }
 

@@ -232,7 +232,6 @@ function ListingTemplateInner({
 				<Text
 					c="dimmed"
 					ta="center"
-					mt={0}
 				>
 					Template tidak ditemukan
 				</Text>
@@ -267,7 +266,7 @@ function ListingTemplateInner({
 				data={pagination}
 				loading={isLoading}
 				onPaging={handlerPagination}
-				className="mt-xl"
+				className="mt-10"
 			/>
 
 			<StyleGap
@@ -293,7 +292,7 @@ function ListingDefault({
 			<div className={styles.listing}>
 				<SkeletonItems
 					loading={loading}
-					total={block.total || 8}
+					total={block.column || 6}
 				/>
 			</div>
 		)
@@ -312,14 +311,7 @@ function ListingDefault({
 		)
 	}
 
-	return (
-		<Text
-			c="dimmed"
-			ta="center"
-		>
-			Template tidak ditemukan.
-		</Text>
-	)
+	return null
 }
 
 function ListingLoadMore({
@@ -358,14 +350,7 @@ function ListingLoadMore({
 		)
 	}
 
-	return (
-		<Text
-			c="dimmed"
-			ta="center"
-		>
-			Template tidak ditemukan.
-		</Text>
-	)
+	return null
 }
 
 function ListingInfiniteScroll({

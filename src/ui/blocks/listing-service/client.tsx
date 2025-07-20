@@ -153,6 +153,15 @@ export function ListingServiceInner({
 				['--column' as string]: column,
 			}}
 		>
+			{!posts.length && !isLoading ? (
+				<Text
+					c="dimmed"
+					ta="center"
+				>
+					Layanan tidak ditemukan
+				</Text>
+			) : null}
+
 			{block.pagination === 'infinite-scroll' ? (
 				<ListingInfiniteScroll
 					column={column}
@@ -208,7 +217,7 @@ function ListingDefault({
 			<div className={styles.listing}>
 				<SkeletonItems
 					loading={loading}
-					total={block.total || 6}
+					total={block.column || 6}
 				/>
 			</div>
 		)
@@ -227,14 +236,7 @@ function ListingDefault({
 		)
 	}
 
-	return (
-		<Text
-			c="dimmed"
-			ta="center"
-		>
-			Service tidak ditemukan.
-		</Text>
-	)
+	return null
 }
 
 function ListingLoadMore({
@@ -266,21 +268,14 @@ function ListingLoadMore({
 					/>
 				))}
 				<SkeletonItems
-					loading={true}
+					loading={loading}
 					total={column}
 				/>
 			</div>
 		)
 	}
 
-	return (
-		<Text
-			c="dimmed"
-			ta="center"
-		>
-			Service tidak ditemukan.
-		</Text>
-	)
+	return null
 }
 
 function ListingInfiniteScroll({

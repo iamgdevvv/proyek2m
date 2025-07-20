@@ -17,7 +17,8 @@
 
 	.thumbnail {
 		@apply relative overflow-hidden;
-		@apply w-1/2 h-full min-h-md;
+		@apply w-full sm:w-1/2 sm:h-full sm:min-h-md aspect-[4/3] sm:aspect-auto;
+		@apply -order-1 sm:order-2;
 
 		img {
 			@apply absolute top-0 left-0 z-1;
@@ -27,7 +28,7 @@
 	}
 
 	.content {
-		@apply w-1/2 p-10;
+		@apply w-full sm:w-1/2 p-5 md:p-10;
 	}
 }
 

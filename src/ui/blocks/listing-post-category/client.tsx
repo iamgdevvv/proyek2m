@@ -160,6 +160,15 @@ function ListingPostCategoryInner({
 				['--column' as string]: column,
 			}}
 		>
+			{!categories.length && !isLoading ? (
+				<Text
+					c="dimmed"
+					ta="center"
+				>
+					Blog kategori tidak ditemukan.
+				</Text>
+			) : null}
+
 			{block.pagination === 'infinite-scroll' ? (
 				<ListingInfiniteScroll
 					column={column}
@@ -192,7 +201,7 @@ function ListingPostCategoryInner({
 				data={pagination}
 				loading={isLoading}
 				onPaging={handlerPagination}
-				className="mt-xl"
+				className="mt-10"
 			/>
 			<StyleGap
 				id={refId}
@@ -220,7 +229,7 @@ function ListingDefault({
 				<SkeletonItems
 					gap={gap}
 					loading={loading}
-					total={block.total || 6}
+					total={block.column || 6}
 				/>
 			</div>
 		)
@@ -241,14 +250,7 @@ function ListingDefault({
 		)
 	}
 
-	return (
-		<Text
-			c="dimmed"
-			ta="center"
-		>
-			Blog tidak ditemukan.
-		</Text>
-	)
+	return null
 }
 
 function ListingLoadMore({
@@ -294,14 +296,7 @@ function ListingLoadMore({
 		)
 	}
 
-	return (
-		<Text
-			c="dimmed"
-			ta="center"
-		>
-			Blog tidak ditemukan.
-		</Text>
-	)
+	return null
 }
 
 function ListingInfiniteScroll({

@@ -19,7 +19,7 @@ export const queryListingFaq = async (
 ) => {
 	let sort: Sort | undefined = undefined
 	let search: OptionsQueryFaqs['search'] = options?.search
-	let limit = options?.limit || block.total || 6
+	let limit = options?.limit || block.total || 12
 	const faqIds: number[] = []
 	const faqTypes: NonNullable<Faq['type']> = []
 

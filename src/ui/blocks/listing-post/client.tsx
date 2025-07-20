@@ -257,9 +257,8 @@ function ListingPostInner({
 				<Text
 					c="dimmed"
 					ta="center"
-					mt={0}
 				>
-					Blog tidak ditemukan
+					Blog tidak ditemukan.
 				</Text>
 			) : null}
 
@@ -292,7 +291,7 @@ function ListingPostInner({
 				data={pagination}
 				loading={isLoading}
 				onPaging={handlerPagination}
-				className="mt-xl"
+				className="mt-10"
 			/>
 
 			<StyleGap
@@ -318,7 +317,7 @@ function ListingDefault({
 			<div className={styles.listing}>
 				<SkeletonItems
 					loading={loading}
-					total={block.total || 6}
+					total={block.column || 6}
 				/>
 			</div>
 		)
@@ -337,14 +336,7 @@ function ListingDefault({
 		)
 	}
 
-	return (
-		<Text
-			c="dimmed"
-			ta="center"
-		>
-			Blog tidak ditemukan.
-		</Text>
-	)
+	return null
 }
 
 function ListingLoadMore({
@@ -383,14 +375,7 @@ function ListingLoadMore({
 		)
 	}
 
-	return (
-		<Text
-			c="dimmed"
-			ta="center"
-		>
-			Blog tidak ditemukan.
-		</Text>
-	)
+	return null
 }
 
 function ListingInfiniteScroll({

@@ -83,6 +83,9 @@ export const BannerBlock: Block = {
 			name: 'actions',
 			minRows: 1,
 			fields: ButtonBlock.fields,
+			admin: {
+				condition: (_, siblingData) => siblingData.type !== 'none',
+			},
 		},
 		styleField({
 			textColor: true,

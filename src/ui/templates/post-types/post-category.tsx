@@ -19,7 +19,7 @@ export default function PostCategoryTemplate({ data, site }: Props) {
 						type: 'selectedCategories',
 						selectedCategories: [data.id],
 						showFilter: true,
-						pagination: 'infinite-scroll',
+						pagination: 'load-more',
 					}}
 					withContainer
 				/>

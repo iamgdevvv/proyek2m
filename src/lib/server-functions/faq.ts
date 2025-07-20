@@ -17,7 +17,7 @@ export type OptionsQueryFaqs = Omit<Options<'faqs', Record<keyof Faq, true>>, 'c
 	}
 }
 
-const fieldSearch = ['title', 'message']
+const fieldSearch = ['title']
 
 export const queryFaqs = async <T extends Partial<Record<keyof Faq, true>> | undefined>(
 	options?: OptionsQueryFaqs,
