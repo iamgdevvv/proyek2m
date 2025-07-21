@@ -103,6 +103,10 @@ function ContentMediaCardInner({ block, ...props }: Omit<ContentMediaCardProps, 
 						base: 'none',
 					},
 				}}
+				imageProps={{
+					width: 585,
+					height: 585,
+				}}
 				className={styles.media}
 			/>
 			<StyleGap

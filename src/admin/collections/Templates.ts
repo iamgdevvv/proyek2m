@@ -1,6 +1,5 @@
 import type { CollectionConfig } from 'payload'
 
-import { BannerBlock } from '$payload-blocks/Banner'
 import { afterReadHookLink } from '$payload-fields/link'
 import { metafield } from '$payload-fields/metadata'
 import { authenticated, authenticatedActionRole } from '$payload-libs/access-rules'
@@ -88,17 +87,6 @@ export const Templates: CollectionConfig = {
 									},
 								},
 							],
-						},
-					],
-				},
-				{
-					label: 'Banner',
-					fields: [
-						{
-							type: 'group',
-							name: 'banner',
-							label: false,
-							fields: BannerBlock.fields,
 						},
 					],
 				},

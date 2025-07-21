@@ -588,7 +588,7 @@ function FilterListing({
 		>
 			<TextInput
 				type="search"
-				placeholder="Cari warga..."
+				placeholder="Cari klien..."
 				className={styles.search}
 				rightSection={
 					<ThemeIcon

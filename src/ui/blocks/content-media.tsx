@@ -97,6 +97,10 @@ function ContentMediaInner({ block, ...props }: Omit<ContentMediaProps, 'withCon
 							base: 'lg',
 						},
 					}}
+					imageProps={{
+						width: 686,
+						height: 686,
+					}}
 				/>
 			</div>
 			<StyleGap
