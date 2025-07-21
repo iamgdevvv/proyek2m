@@ -60,35 +60,6 @@ export const sendContactForm = async (options: OptionsSendContactForm) => {
 			depth: 10,
 		})
 
-		if (
-			typeof formSubmission.form === 'object' &&
-			formSubmission.form.emails &&
-			formSubmission.form.emails.length
-		) {
-			await Promise.all(
-				formSubmission.form.emails.map(async (email) => {
-					try {
-						await payload.sendEmail({
-							...email,
-							text: `
-		                    <pre>${JSON.stringify(
-								{
-									message: email.message,
-									body: options.body,
-								},
-								null,
-								2,
-							)}</pre>
-		                `,
-						})
-					} catch (error) {
-						console.error('Error sending email', { error })
-						logger.error('Error sending email', { error })
-					}
-				}),
-			)
-		}
-
 		return formSubmission
 	} catch (error) {
 		console.error('Error sending contact form', { error })

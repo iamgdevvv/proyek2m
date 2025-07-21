@@ -31,6 +31,10 @@ export const ListingTemplateBlock: Block = {
 					value: 'selectedServices',
 				},
 				{
+					label: 'Selected Teams',
+					value: 'selectedTeams',
+				},
+				{
 					label: 'Search',
 					value: 'search',
 				},
@@ -52,6 +56,15 @@ export const ListingTemplateBlock: Block = {
 			hasMany: true,
 			admin: {
 				condition: (_, siblingData) => siblingData.type === 'selectedServices',
+			},
+		},
+		{
+			name: 'selectedTeams',
+			type: 'relationship',
+			relationTo: 'teams',
+			hasMany: true,
+			admin: {
+				condition: (_, siblingData) => siblingData.type === 'selectedTeams',
 			},
 		},
 		{

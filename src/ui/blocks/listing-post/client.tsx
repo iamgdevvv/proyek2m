@@ -253,7 +253,7 @@ function ListingPostInner({
 				onSearch={handlerSearch}
 			/>
 
-			{!posts.length && block.showFilter && !isLoading ? (
+			{!posts.length && !isLoading ? (
 				<Text
 					c="dimmed"
 					ta="center"
@@ -693,7 +693,7 @@ function PaginationListing({
 	onPaging: (value: number) => void
 	className?: string
 }) {
-	if (block.pagination === 'load-more') {
+	if (block.pagination === 'load-more' && (data?.hasNextPage || loading)) {
 		return (
 			<Center className={className}>
 				{data?.hasNextPage ? (

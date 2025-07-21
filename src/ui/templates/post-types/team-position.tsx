@@ -22,6 +22,7 @@ export default function TeamPositionTemplate({ data, site }: Props) {
 						pagination: 'paged',
 					}}
 					withContainer
+					className="pt-7 pb-20 md:pb-40"
 				/>
 			</main>
 			<Footer site={site} />

@@ -228,7 +228,7 @@ function ListingTemplateInner({
 				onSearch={handlerSearch}
 			/>
 
-			{!templates.length && block.showFilter && !isLoading ? (
+			{!templates.length && !isLoading ? (
 				<Text
 					c="dimmed"
 					ta="center"
@@ -598,7 +598,7 @@ function PaginationListing({
 	onPaging: (value: number) => void
 	className?: string
 }) {
-	if (block.pagination === 'load-more') {
+	if (block.pagination === 'load-more' && (data?.hasNextPage || loading)) {
 		return (
 			<Center className={className}>
 				{data?.hasNextPage ? (

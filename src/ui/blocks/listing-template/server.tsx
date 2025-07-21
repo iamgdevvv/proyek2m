@@ -24,6 +24,7 @@ export const queryListingTemplate = async (
 	let limit = options?.limit || block.total || 6
 	const templateIds: number[] = []
 	const serviceIds: number[] = []
+	const teamIds: number[] = []
 
 	if (options?.sort) {
 		sort = options.sort
@@ -67,6 +68,18 @@ export const queryListingTemplate = async (
 		if (serviceIds.length === 0) {
 			return null
 		}
+	} else if (block.type === 'selectedTeams' && block.selectedTeams && !options?.filter?.teamIds) {
+		block.selectedTeams.forEach((team) => {
+			if (typeof team === 'object') {
+				teamIds.push(team.id)
+			} else {
+				teamIds.push(team)
+			}
+		})
+
+		if (teamIds.length === 0) {
+			return null
+		}
 	} else if (block.type === 'search' && block.search && !search) {
 		search = block.search
 	}
@@ -81,6 +94,7 @@ export const queryListingTemplate = async (
 				...options?.filter,
 				ids: options?.filter?.ids || templateIds,
 				serviceIds: options?.filter?.serviceIds || serviceIds,
+				teamIds: options?.filter?.teamIds || teamIds,
 			},
 		},
 		{

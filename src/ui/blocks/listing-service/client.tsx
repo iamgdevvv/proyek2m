@@ -369,7 +369,7 @@ function PaginationListing({
 	onPaging: (value: number) => void
 	className?: string
 }) {
-	if (block.pagination === 'load-more') {
+	if (block.pagination === 'load-more' && (data?.hasNextPage || loading)) {
 		return (
 			<Center className={className}>
 				{data?.hasNextPage ? (

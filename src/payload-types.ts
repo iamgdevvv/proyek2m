@@ -430,7 +430,6 @@ export interface Media {
 export interface Asset {
   id: number;
   alt?: string | null;
-  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -7818,9 +7817,10 @@ export interface TeamPosition {
  * via the `definition` "listingTemplate".
  */
 export interface ListingTemplate {
-  type?: ('templates' | 'selectedTemplates' | 'selectedServices' | 'search') | null;
+  type?: ('templates' | 'selectedTemplates' | 'selectedServices' | 'selectedTeams' | 'search') | null;
   selectedTemplates?: (number | Template)[] | null;
   selectedServices?: (number | Service)[] | null;
+  selectedTeams?: (number | Team)[] | null;
   search?: string | null;
   order?: ('DESC' | 'ASC') | null;
   orderBy?: ('date' | 'title') | null;
@@ -9055,7 +9055,6 @@ export interface PayloadMigration {
  */
 export interface AssetSelect<T extends boolean = true> {
   alt?: T;
-  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;

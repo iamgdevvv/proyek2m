@@ -9,6 +9,7 @@ import { slugify } from '$utils/common'
 import { type FeaturedListingClientProps } from './server'
 
 import styles from '$styles/blocks/featured-listing-client.module.css'
+import { Text } from '@mantine/core'
 
 export type FeaturedListingClientClientProps = Omit<FeaturedListingClientProps, 'queried'> & {
 	clients: ClientLogoCardProps['data'][]
@@ -80,25 +81,36 @@ function ListingClientInner({
 				['--column' as string]: column,
 			}}
 		>
-			<HeadingListing
-				block={{
-					content: block.content,
-					actions: block.actions,
-					align: 'between',
-					textColor: block.textColor,
-					featuredTextColor: block.featuredTextColor,
-				}}
-				className={styles.heading_listing}
-			/>
+			{block.content?.content || block.content?.featuredText || block.actions?.length ? (
+				<HeadingListing
+					block={{
+						content: block.content,
+						actions: block.actions,
+						align: 'between',
+						textColor: block.textColor,
+						featuredTextColor: block.featuredTextColor,
+					}}
+					className={styles.heading_listing}
+				/>
+			) : null}
 
-			<div className={styles.listing}>
-				{clients.map((client, index) => (
-					<ClientLogoCard
-						key={`${compId}-client-${index}`}
-						data={client}
-					/>
-				))}
-			</div>
+			{clients.length ? (
+				<div className={styles.listing}>
+					{clients.map((client, index) => (
+						<ClientLogoCard
+							key={`${compId}-client-${index}`}
+							data={client}
+						/>
+					))}
+				</div>
+			) : (
+				<Text
+					c="dimmed"
+					ta="center"
+				>
+					Klien2M tidak ditemukan
+				</Text>
+			)}
 
 			<StyleGap
 				id={refId}

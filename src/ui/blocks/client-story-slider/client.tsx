@@ -5,6 +5,7 @@ import Carousel from '$components/Carousel'
 import { FadeContainer, FadeDiv } from '$components/Fade'
 import { ClientStoryCard, type ClientStoryCardProps } from '$layouts/Client'
 import { gapVars } from '$utils/styles'
+import { Text } from '@mantine/core'
 import { type ClientStorySliderProps } from './server'
 
 export type ClientStorySliderClientProps = Omit<ClientStorySliderProps, 'queried'> & {
@@ -62,6 +63,22 @@ function ListingClientInner({
 			vertical: block.gap?.vertical || block.gap?.base || '24px',
 		}
 	}, [block.gap])
+
+	if (clients.length === 0) {
+		return (
+			<div
+				data-slot="listing-client-inner"
+				{...props}
+			>
+				<Text
+					c="dimmed"
+					ta="center"
+				>
+					Klien2M tidak ditemukan
+				</Text>
+			</div>
+		)
+	}
 
 	return (
 		<Carousel
