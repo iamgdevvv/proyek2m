@@ -124,7 +124,7 @@ export default function TeamTemplate({ data, site }: Props) {
 									selectedTeams: [data.id],
 									total: 9999999,
 								}}
-								className="mt-8 mb-10"
+								className="mt-6 mb-10"
 							/>
 						</TimelineItem>
 
@@ -145,7 +145,7 @@ export default function TeamTemplate({ data, site }: Props) {
 									total: 3,
 									pagination: 'load-more',
 								}}
-								className="mt-8 mb-10"
+								className="mt-6 mb-10"
 							/>
 						</TimelineItem>
 
@@ -167,7 +167,7 @@ export default function TeamTemplate({ data, site }: Props) {
 									total: 3,
 									pagination: 'load-more',
 								}}
-								className="mt-8 mb-10"
+								className="mt-6 mb-10"
 							/>
 						</TimelineItem>
 					</Timeline>

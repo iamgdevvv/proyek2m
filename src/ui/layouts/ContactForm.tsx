@@ -435,11 +435,11 @@ export default function ContactForm({ data, ...props }: ContactFormType) {
 									}}
 									spacing={{
 										base: 'xs',
-										md: `${field.gap || 24}px`,
+										md: `${field.gap || 8}px`,
 									}}
 									verticalSpacing={{
 										base: 'xs',
-										md: `${field.gap || 24}px`,
+										md: `${field.gap || 8}px`,
 									}}
 								>
 									{field.options.map((option) => (
@@ -478,11 +478,11 @@ export default function ContactForm({ data, ...props }: ContactFormType) {
 									}}
 									spacing={{
 										base: 'xs',
-										md: `${field.gap || 24}px`,
+										md: `${field.gap || 8}px`,
 									}}
 									verticalSpacing={{
 										base: 'xs',
-										md: `${field.gap || 24}px`,
+										md: `${field.gap || 8}px`,
 									}}
 								>
 									{field.options.map((option) => (
