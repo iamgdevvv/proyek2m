@@ -1,5 +1,9 @@
 @reference '../global.css';
 
+.main {
+	@apply pt-6 pb-20 md:pb-32;
+}
+
 .featuredImage {
 	@apply w-full aspect-[16/9];
 	@apply rounded-lg;
@@ -7,7 +11,7 @@
 
 .article {
 	@apply relative;
-	@apply w-full mt-10;
+	@apply w-full mt-6 md:mt-10;
 	@apply flex items-stretch flex-wrap;
 
 	.heading {

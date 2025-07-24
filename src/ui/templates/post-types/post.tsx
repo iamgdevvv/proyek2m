@@ -9,6 +9,7 @@ import Header from '$layouts/Header'
 import HeadingPost from '$layouts/HeadingPost'
 import SidebarPost from '$layouts/SidebarPost'
 import type { SiteTemplateProps } from '$templates/site'
+import { cx } from '$utils/styles'
 
 import styles from '$styles/templates/post.module.css'
 
@@ -20,7 +21,7 @@ export default function PostTemplate({ data, site }: Props) {
 	return (
 		<div className="site">
 			<Header site={site} />
-			<main className="site-main pb-20 md:pb-32">
+			<main className={cx('site-main', styles.main)}>
 				<FadeContainer className="container">
 					<Image
 						src={data.featuredImage}

@@ -24,7 +24,7 @@ export const Pages: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: ['title', 'slug', 'updatedAt', 'author'],
+		defaultColumns: ['title', 'slug', '_status', 'updatedAt', 'author'],
 		livePreview: {
 			url: ({ data, req }) => {
 				return generatePreviewPath({

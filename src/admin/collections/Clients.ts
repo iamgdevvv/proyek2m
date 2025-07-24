@@ -35,7 +35,7 @@ export const Clients: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: ['title', 'slug', 'template', 'updatedAt', 'author'],
+		defaultColumns: ['title', 'slug', 'template', '_status', 'updatedAt', 'author'],
 		livePreview: {
 			url: ({ data, req }) =>
 				generatePreviewPath({

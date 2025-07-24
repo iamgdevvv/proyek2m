@@ -364,7 +364,20 @@ export default function ContactForm({ data, ...props }: ContactFormType) {
 								label={field.label}
 								name={field.name}
 								placeholder={field.placeholder || undefined}
-								accept={field.allowedTypes?.join(',')}
+								accept={
+									field.allowedTypes
+										? field.allowedTypes
+												.map((type) =>
+													type === 'image'
+														? 'image/*'
+														: type === 'pdf'
+															? 'application/pdf'
+															: undefined,
+												)
+												.filter(Boolean)
+												.join(',')
+										: undefined
+								}
 								style={{
 									width: `${field.width || 100}%`,
 								}}

@@ -27,7 +27,7 @@ export const Templates: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: ['title', 'slug', 'services', 'updatedAt', 'author'],
+		defaultColumns: ['title', 'slug', 'services', '_status', 'updatedAt', 'author'],
 		livePreview: {
 			url: ({ data, req }) =>
 				generatePreviewPath({

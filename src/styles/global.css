@@ -158,16 +158,6 @@ img {
 	}
 }
 
-[data-slot='fade'] {
-	@apply opacity-0;
-}
-
-.no-js {
-	[data-slot='fade'] {
-		@apply opacity-100;
-	}
-}
-
 .mantine-Badge-root {
 	@apply font-semibold normal-case;
 }

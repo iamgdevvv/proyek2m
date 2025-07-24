@@ -430,6 +430,7 @@ export interface Media {
 export interface Asset {
   id: number;
   alt?: string | null;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -758,7 +759,7 @@ export interface Form {
             width?: number | null;
             defaultValue?: string | null;
             required?: boolean | null;
-            allowedTypes?: ('image/*' | 'application/pdf')[] | null;
+            allowedTypes?: ('image' | 'pdf')[] | null;
             placeholder?: string | null;
             id?: string | null;
             blockName?: string | null;
@@ -9055,6 +9056,7 @@ export interface PayloadMigration {
  */
 export interface AssetSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;

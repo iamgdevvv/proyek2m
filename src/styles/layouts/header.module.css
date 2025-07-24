@@ -57,8 +57,9 @@
 
 .navigation_mobile {
 	@apply absolute top-[calc(100%+8px)] left-0 z-50;
-	@apply w-full max-h-[calc(100dvh-100%-8px)] p-6;
+	@apply w-full max-h-[calc(100dvh-100%-28px)] p-6;
 	@apply rounded-md bg-white shadow-xl shadow-gray-100;
+	@apply overflow-auto;
 
 	.menu {
 		@apply flex flex-col;

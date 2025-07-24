@@ -76,11 +76,11 @@ export const formFields = ({ defaultFields }: { defaultFields: Field[] }) => {
 								options: [
 									{
 										label: 'Image',
-										value: 'image/*',
+										value: 'image',
 									},
 									{
 										label: 'PDF',
-										value: 'application/pdf',
+										value: 'pdf',
 									},
 								],
 							},

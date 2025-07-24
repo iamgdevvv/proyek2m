@@ -2,12 +2,10 @@ import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/c
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
-import Script from 'next/script'
 import { Suspense, type ReactNode } from 'react'
 
 import RouteProgressbar from '$components/RouteProgressbar'
 import theme from '$modules/theme-mantine'
-import { cx } from '$utils/styles'
 
 import '$styles/global.css'
 import '@mantine/carousel/styles.css'
@@ -42,16 +40,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html
 			{...mantineHtmlProps}
-			lang="en"
-			className={cx(fontBody.variable, 'no-js')}
+			lang="id"
+			className={fontBody.variable}
 		>
 			<head>
-				<Script
-					id="remove-no-js"
-					dangerouslySetInnerHTML={{
-						__html: `document.documentElement.className = document.documentElement.className.replace('no-js', 'js');`,
-					}}
-				/>
 				<ColorSchemeScript />
 			</head>
 			<body>
