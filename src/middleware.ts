@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
 		return NextResponse.redirect(new URL('/404', request.url))
 	}
 
-	if (pathname.startsWith('/api') && !isLoggedIn) {
+	if (pathname.startsWith('/api') && !pathname.startsWith('/api/users') && !isLoggedIn) {
 		return NextResponse.redirect(new URL('/404', request.url))
 	}
 
