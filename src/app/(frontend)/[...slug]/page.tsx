@@ -34,7 +34,7 @@ import {
 } from '$server-functions/loader'
 import SiteTemplate from '$templates/site'
 import type { Queried } from '$type'
-import Script from 'next/script'
+import Head from 'next/head'
 
 type Args = {
 	params: Promise<{
@@ -210,14 +210,11 @@ export default async function Page({ params: paramsPromise }: Args) {
 			{siteConfig?.googleAnalytics ? (
 				<>
 					{/* <!-- Google tag (gtag.js) --> */}
-					<Script
+					<script
+						async
 						src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalytics}`}
-						strategy="afterInteractive"
 					/>
-					<Script
-						id="google-analytics"
-						strategy="afterInteractive"
-					>
+					<script id="google-analytics">
 						{`
 						window.dataLayer = window.dataLayer || [];
 						function gtag(){window.dataLayer.push(arguments);}
@@ -225,24 +222,25 @@ export default async function Page({ params: paramsPromise }: Args) {
 
 						gtag('config', '${siteConfig.googleAnalytics}');
 						`}
-					</Script>
+					</script>
 				</>
 			) : null}
 			{siteConfig?.googleTagManager ? (
 				<>
-					<Script
-						id="google-tag-manager"
-						strategy="afterInteractive"
-						dangerouslySetInnerHTML={{
-							__html: `
+					<Head>
+						<script
+							id="google-tag-manager"
+							dangerouslySetInnerHTML={{
+								__html: `
 							(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 							new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 							j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 							})(window,document,'script','dataLayer','${siteConfig.googleTagManager}');
 							`,
-						}}
-					/>
+							}}
+						/>
+					</Head>
 					{/* GTM noscript iframe (for users with JavaScript disabled) */}
 					<noscript>
 						<iframe
