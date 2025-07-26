@@ -1,3 +1,4 @@
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { redirect } from 'next/navigation'
@@ -206,6 +207,12 @@ export default async function Page({ params: paramsPromise }: Args) {
 
 	return (
 		<>
+			{siteConfig?.googleAnalytics ? (
+				<GoogleAnalytics gaId={siteConfig.googleAnalytics} />
+			) : null}
+			{siteConfig?.googleTagManager ? (
+				<GoogleTagManager gtmId={siteConfig.googleTagManager} />
+			) : null}
 			<script
 				id="proyek2m-schema"
 				type="application/ld+json"

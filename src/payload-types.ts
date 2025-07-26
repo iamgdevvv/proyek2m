@@ -10057,10 +10057,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Site {
   id: number;
-  /**
-   * Encourage search engines from indexing this site
-   */
-  sitePublicly?: boolean | null;
   title?: string | null;
   favicon?: (number | null) | Asset;
   socials?: {
@@ -10307,6 +10303,18 @@ export interface Site {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Encourage search engines from indexing this site
+   */
+  sitePublicly?: boolean | null;
+  /**
+   * Add your Google Analytics ID
+   */
+  googleAnalytics?: string | null;
+  /**
+   * Add your Google Tag Manager ID
+   */
+  googleTagManager?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -10315,7 +10323,6 @@ export interface Site {
  * via the `definition` "site_select".
  */
 export interface SiteSelect<T extends boolean = true> {
-  sitePublicly?: T;
   title?: T;
   favicon?: T;
   socials?:
@@ -10422,6 +10429,9 @@ export interface SiteSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  sitePublicly?: T;
+  googleAnalytics?: T;
+  googleTagManager?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

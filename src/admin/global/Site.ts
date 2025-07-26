@@ -22,14 +22,6 @@ export const SiteConfig: GlobalConfig = {
 					label: 'General',
 					fields: [
 						{
-							name: 'sitePublicly',
-							type: 'checkbox',
-							defaultValue: false,
-							admin: {
-								description: 'Encourage search engines from indexing this site',
-							},
-						},
-						{
 							name: 'title',
 							type: 'text',
 						},
@@ -225,6 +217,33 @@ export const SiteConfig: GlobalConfig = {
 									],
 								},
 							],
+						},
+					],
+				},
+				{
+					label: 'Misc',
+					fields: [
+						{
+							name: 'sitePublicly',
+							type: 'checkbox',
+							defaultValue: false,
+							admin: {
+								description: 'Encourage search engines from indexing this site',
+							},
+						},
+						{
+							name: 'googleAnalytics',
+							type: 'text',
+							admin: {
+								description: 'Add your Google Analytics ID',
+							},
+						},
+						{
+							name: 'googleTagManager',
+							type: 'text',
+							admin: {
+								description: 'Add your Google Tag Manager ID',
+							},
 						},
 					],
 				},
