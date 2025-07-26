@@ -1,4 +1,3 @@
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { redirect } from 'next/navigation'
@@ -35,6 +34,7 @@ import {
 } from '$server-functions/loader'
 import SiteTemplate from '$templates/site'
 import type { Queried } from '$type'
+import Script from 'next/script'
 
 type Args = {
 	params: Promise<{
@@ -208,10 +208,51 @@ export default async function Page({ params: paramsPromise }: Args) {
 	return (
 		<>
 			{siteConfig?.googleAnalytics ? (
-				<GoogleAnalytics gaId={siteConfig.googleAnalytics} />
+				<>
+					{/* <!-- Google tag (gtag.js) --> */}
+					<Script
+						src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalytics}`}
+						strategy="afterInteractive"
+					/>
+					<Script
+						id="google-analytics"
+						strategy="afterInteractive"
+					>
+						{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){window.dataLayer.push(arguments);}
+						gtag('js', new Date());
+
+						gtag('config', '${siteConfig.googleAnalytics}');
+						`}
+					</Script>
+				</>
 			) : null}
 			{siteConfig?.googleTagManager ? (
-				<GoogleTagManager gtmId={siteConfig.googleTagManager} />
+				<>
+					<Script
+						id="google-tag-manager"
+						strategy="afterInteractive"
+						dangerouslySetInnerHTML={{
+							__html: `
+							(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+							new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+							j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+							'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+							})(window,document,'script','dataLayer','${siteConfig.googleTagManager}');
+							`,
+						}}
+					/>
+					{/* GTM noscript iframe (for users with JavaScript disabled) */}
+					<noscript>
+						<iframe
+							src={`https://www.googletagmanager.com/ns.html?id=${siteConfig.googleTagManager}`}
+							height="0"
+							width="0"
+							style={{ display: 'none', visibility: 'hidden' }}
+						></iframe>
+					</noscript>
+				</>
 			) : null}
 			<script
 				id="proyek2m-schema"
