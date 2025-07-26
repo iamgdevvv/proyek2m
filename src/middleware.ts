@@ -21,11 +21,7 @@ export async function middleware(request: NextRequest) {
 		return NextResponse.redirect(new URL('/404', request.url))
 	}
 
-	if (
-		pathname.startsWith('/api') &&
-		['/api/users', '/api/media', '/api/revalidate'].includes(pathname) === false &&
-		!isLoggedIn
-	) {
+	if (pathname.startsWith('/api') && !isLoggedIn) {
 		return NextResponse.redirect(new URL('/404', request.url))
 	}
 
