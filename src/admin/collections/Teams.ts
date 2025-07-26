@@ -128,6 +128,7 @@ export const Teams: CollectionConfig = {
 											name: 'github',
 											admin: {
 												width: '33.333%',
+												placeholder: 'Fill with username',
 											},
 										},
 										{
@@ -142,6 +143,7 @@ export const Teams: CollectionConfig = {
 											name: 'instagram',
 											admin: {
 												width: '33.333%',
+												placeholder: 'Fill with username',
 											},
 										},
 										{
@@ -149,6 +151,7 @@ export const Teams: CollectionConfig = {
 											name: 'tiktok',
 											admin: {
 												width: '33.333%',
+												placeholder: 'Fill with username',
 											},
 										},
 										{
@@ -170,6 +173,7 @@ export const Teams: CollectionConfig = {
 											name: 'twitter',
 											admin: {
 												width: '33.333%',
+												placeholder: 'Fill with username',
 											},
 										},
 									],

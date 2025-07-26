@@ -1,5 +1,18 @@
-import { Badge, Group, Stack, Text, Timeline, TimelineItem, Title } from '@mantine/core'
-import { CircleUser, LayoutPanelLeft, Rss } from 'lucide-react'
+import { ActionIcon, Badge, Group, Stack, Text, Timeline, TimelineItem, Title } from '@mantine/core'
+import {
+	CircleUser,
+	Facebook,
+	Github,
+	Globe,
+	Instagram,
+	LayoutPanelLeft,
+	Linkedin,
+	Mail,
+	Music2,
+	Rss,
+	Twitter,
+	Youtube,
+} from 'lucide-react'
 
 import FeaturedListingClient from '$blocks/featured-listing-client/server'
 import ListingPost from '$blocks/listing-post/server'
@@ -86,6 +99,101 @@ export default function TeamTemplate({ data, site }: Props) {
 									})}
 								</Group>
 							) : null}
+							<Group
+								gap="xs"
+								mt="xs"
+							>
+								{data.socials?.email ? (
+									<ActionIcon
+										variant="light"
+										component={Link}
+										href={`mailto:${data.socials.email}`}
+										target="_blank"
+									>
+										<Mail size={18} />
+									</ActionIcon>
+								) : null}
+								{data.socials?.website ? (
+									<ActionIcon
+										variant="light"
+										component={Link}
+										href={data.socials.website}
+										target="_blank"
+									>
+										<Globe size={18} />
+									</ActionIcon>
+								) : null}
+								{data.socials?.github ? (
+									<ActionIcon
+										variant="light"
+										component={Link}
+										href={`https://github.com/${data.socials.github}`}
+										target="_blank"
+									>
+										<Github size={18} />
+									</ActionIcon>
+								) : null}
+								{data.socials?.linkedin ? (
+									<ActionIcon
+										variant="light"
+										component={Link}
+										href={data.socials.linkedin}
+										target="_blank"
+									>
+										<Linkedin size={18} />
+									</ActionIcon>
+								) : null}
+								{data.socials?.instagram ? (
+									<ActionIcon
+										variant="light"
+										component={Link}
+										href={`https://instagram.com/${data.socials.instagram}`}
+										target="_blank"
+									>
+										<Instagram size={18} />
+									</ActionIcon>
+								) : null}
+								{data.socials?.tiktok ? (
+									<ActionIcon
+										variant="light"
+										component={Link}
+										href={`https://tiktok.com/@${data.socials.tiktok}`}
+										target="_blank"
+									>
+										<Music2 size={18} />
+									</ActionIcon>
+								) : null}
+								{data.socials?.youtube ? (
+									<ActionIcon
+										variant="light"
+										component={Link}
+										href={data.socials.youtube}
+										target="_blank"
+									>
+										<Youtube size={18} />
+									</ActionIcon>
+								) : null}
+								{data.socials?.facebook ? (
+									<ActionIcon
+										variant="light"
+										component={Link}
+										href={data.socials.facebook}
+										target="_blank"
+									>
+										<Facebook size={18} />
+									</ActionIcon>
+								) : null}
+								{data.socials?.twitter ? (
+									<ActionIcon
+										variant="light"
+										component={Link}
+										href={`https://x.com/${data.socials.twitter}`}
+										target="_blank"
+									>
+										<Twitter size={18} />
+									</ActionIcon>
+								) : null}
+							</Group>
 						</Stack>
 					</div>
 					{data.motivation ? (
@@ -144,6 +252,11 @@ export default function TeamTemplate({ data, site }: Props) {
 									selectedTeams: [data.id],
 									total: 3,
 									pagination: 'load-more',
+									column: 3,
+									gap: {
+										base: '20px',
+										vertical: '20px',
+									},
 								}}
 								className="mt-6 mb-10"
 							/>

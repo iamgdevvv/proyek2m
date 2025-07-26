@@ -7,8 +7,6 @@ import { getPayload } from 'payload'
 import configPromise from '$payload-config'
 import type { Config, Site } from '$payload-types'
 
-import { logger } from '$modules/logger'
-
 export const getAuthUser = async () => {
 	const headers = await getHeaders()
 	const payload = await getPayload({ config: configPromise })
@@ -32,7 +30,6 @@ const getGlobal = async <T extends keyof Config['globals']>(
 		return global
 	} catch (error) {
 		console.error('getGlobal', { error })
-		logger.error('getGlobal', { error })
 
 		return null
 	}
@@ -80,7 +77,6 @@ export const postSitemap = async () => {
 		return posts.docs
 	} catch (error) {
 		console.error('postSitemap', { error })
-		logger.error('postSitemap', { error })
 		return []
 	}
 }
@@ -108,7 +104,6 @@ export const clientSitemap = async () => {
 		return posts.docs
 	} catch (error) {
 		console.error('clientSitemap', { error })
-		logger.error('clientSitemap', { error })
 		return []
 	}
 }
@@ -137,7 +132,6 @@ export const pageSitemap = async () => {
 		return posts.docs
 	} catch (error) {
 		console.error('pageSitemap', { error })
-		logger.error('pageSitemap', { error })
 		return []
 	}
 }
@@ -165,7 +159,6 @@ export const postCategorySitemap = async () => {
 		return posts.docs
 	} catch (error) {
 		console.error('postCategorySitemap', { error })
-		logger.error('postCategorySitemap', { error })
 		return []
 	}
 }
@@ -194,7 +187,6 @@ export const teamSitemap = async () => {
 		return posts.docs
 	} catch (error) {
 		console.error('teamSitemap', { error })
-		logger.error('teamSitemap', { error })
 		return []
 	}
 }
@@ -222,7 +214,6 @@ export const teamPositionSitemap = async () => {
 		return posts.docs
 	} catch (error) {
 		console.error('teamPositionSitemap', { error })
-		logger.error('teamPositionSitemap', { error })
 		return []
 	}
 }
@@ -250,7 +241,6 @@ export const templateSitemap = async () => {
 		return posts.docs
 	} catch (error) {
 		console.error('templateSitemap', { error })
-		logger.error('templateSitemap', { error })
 		return []
 	}
 }
@@ -278,7 +268,6 @@ export const serviceSitemap = async () => {
 		return posts.docs
 	} catch (error) {
 		console.error('templateSitemap', { error })
-		logger.error('templateSitemap', { error })
 		return []
 	}
 }

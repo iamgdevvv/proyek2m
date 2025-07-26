@@ -3,7 +3,6 @@ import { unstable_cacheTag as cacheTag } from 'next/cache'
 import type { Options } from 'node_modules/payload/dist/collections/operations/local/find'
 import { getPayload, type PaginatedDocs, type Where } from 'payload'
 
-import { logger } from '$modules/logger'
 import configPromise from '$payload-config'
 import type { Template } from '$payload-types'
 
@@ -107,7 +106,6 @@ export const queryTemplates = async <T extends Partial<Record<keyof Template, tr
 		return result
 	} catch (error) {
 		console.error('Error fetching templates', { error })
-		logger.error('Error fetching templates', { error })
 		return null
 	}
 }

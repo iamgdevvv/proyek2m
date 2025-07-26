@@ -2,8 +2,6 @@ import { revalidateTag } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod/v4'
 
-import { logger } from '$modules/logger'
-
 const schema = z.object({
 	tags: z.array(z.string()).optional(), // ['global', 'global:{slug}', 'posts', 'posts:{slug}', 'sitemap']
 	secret: z.string(),
@@ -30,7 +28,6 @@ export async function GET(req: NextRequest) {
 		})
 	} catch (error) {
 		console.error('Error revalidating', { error })
-		logger.error('Error revalidating', { error })
 
 		if (error instanceof z.ZodError) {
 			return NextResponse.json(

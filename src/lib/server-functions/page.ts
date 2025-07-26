@@ -3,7 +3,6 @@ import { unstable_cacheTag as cacheTag } from 'next/cache'
 import type { Options } from 'node_modules/payload/dist/collections/operations/local/find'
 import { getPayload, type PaginatedDocs, type Where } from 'payload'
 
-import { logger } from '$modules/logger'
 import configPromise from '$payload-config'
 import type { Page } from '$payload-types'
 
@@ -43,7 +42,6 @@ export const queryPages = async <T extends Partial<Record<keyof Page, true>> | u
 		return result
 	} catch (error) {
 		console.error('Error fetching pages', { error })
-		logger.error('Error fetching pages', { error })
 		return null
 	}
 }

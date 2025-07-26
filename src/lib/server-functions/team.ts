@@ -3,7 +3,6 @@ import { unstable_cacheTag as cacheTag } from 'next/cache'
 import type { Options } from 'node_modules/payload/dist/collections/operations/local/find'
 import { getPayload, type PaginatedDocs, type Where } from 'payload'
 
-import { logger } from '$modules/logger'
 import configPromise from '$payload-config'
 import type { Team, TeamPosition } from '$payload-types'
 
@@ -125,7 +124,6 @@ export const queryTeams = async <T extends Partial<Record<keyof Team, true>> | u
 		return result
 	} catch (error) {
 		console.error('Error fetching teams', { error })
-		logger.error('Error fetching teams', { error })
 		return null
 	}
 }
@@ -199,7 +197,6 @@ export const queryTeamPositions = async <
 		return result
 	} catch (error) {
 		console.error('Error fetching teamPositions', { error })
-		logger.error('Error fetching teamPositions', { error })
 		return null
 	}
 }

@@ -3,7 +3,6 @@ import { unstable_cacheTag as cacheTag } from 'next/cache'
 import type { Options } from 'node_modules/payload/dist/collections/operations/local/find'
 import { getPayload, type PaginatedDocs, type Where } from 'payload'
 
-import { logger } from '$modules/logger'
 import configPromise from '$payload-config'
 import type { Faq } from '$payload-types'
 
@@ -84,7 +83,6 @@ export const queryFaqs = async <T extends Partial<Record<keyof Faq, true>> | und
 		return result
 	} catch (error) {
 		console.error('Error fetching faqs', { error })
-		logger.error('Error fetching faqs', { error })
 		return null
 	}
 }

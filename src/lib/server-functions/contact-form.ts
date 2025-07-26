@@ -3,7 +3,6 @@ import { writeFile } from 'fs/promises'
 import path from 'path'
 import { getPayload } from 'payload'
 
-import { logger } from '$modules/logger'
 import configPromise from '$payload-config'
 import type { FormSubmission } from '$payload-types'
 
@@ -63,7 +62,6 @@ export const sendContactForm = async (options: OptionsSendContactForm) => {
 		return formSubmission
 	} catch (error) {
 		console.error('Error sending contact form', { error })
-		logger.error('Error sending contact form', { error })
 
 		return {
 			error: 'Error sending contact form',

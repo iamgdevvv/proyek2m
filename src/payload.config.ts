@@ -10,8 +10,6 @@ import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { s3Storage } from '@payloadcms/storage-s3'
 
-import { logger } from '$modules/logger'
-
 import { revalidateChangeStatic, revalidateDeleteStatic } from '$payload-libs/hooks/revalidate'
 import { richTextEditor } from '$payload-libs/richtext'
 import { getSiteGlobal } from '$payload-libs/server/repos'
@@ -71,9 +69,6 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-	hooks: {
-		afterError: [({ error }) => logger.error('Payload after error', error)],
-	},
 	indexSortableFields: false,
 	admin: {
 		theme: 'light',

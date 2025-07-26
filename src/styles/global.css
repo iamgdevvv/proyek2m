@@ -158,6 +158,16 @@ img {
 	}
 }
 
+.mantine-Typography-root {
+	ol {
+		@apply list-decimal;
+	}
+
+	ul {
+		@apply list-disc;
+	}
+}
+
 .mantine-Badge-root {
 	@apply font-semibold normal-case;
 }

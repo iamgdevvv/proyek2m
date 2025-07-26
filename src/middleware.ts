@@ -21,6 +21,10 @@ export async function middleware(request: NextRequest) {
 		return NextResponse.redirect(new URL('/404', request.url))
 	}
 
+	if (pathname.startsWith('/api') && !isLoggedIn) {
+		return NextResponse.redirect(new URL('/404', request.url))
+	}
+
 	return response
 }
 
@@ -33,6 +37,6 @@ export const config = {
 		 * - _next/image (image optimization files)
 		 * - favicon.ico, sitemap.xml, robots.txt (metadata files)
 		 */
-		'/((?!api|_next/static|_next/image|fonts|blocks|favicon.png|favicon.ico|sitemap.xml|robots.txt).*)',
+		'/((?!_next/static|_next/image|fonts|blocks|favicon.png|favicon.ico|sitemap.xml|robots.txt).*)',
 	],
 }

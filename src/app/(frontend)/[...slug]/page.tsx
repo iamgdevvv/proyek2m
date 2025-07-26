@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-import { logger } from '$modules/logger'
 import {
 	slugClient,
 	slugHomepage,
@@ -281,7 +280,6 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 		return generateMeta(doc, siteConfig)
 	} catch (error) {
 		console.error('generateMetadata', { slug, error })
-		logger.error('generateMetadata', { slug, error })
 
 		return {}
 	}

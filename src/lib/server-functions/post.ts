@@ -3,7 +3,6 @@ import { unstable_cacheTag as cacheTag } from 'next/cache'
 import type { Options } from 'node_modules/payload/dist/collections/operations/local/find'
 import { getPayload, type Where } from 'payload'
 
-import { logger } from '$modules/logger'
 import configPromise from '$payload-config'
 import type { Post, PostCategory } from '$payload-types'
 import type { PaginatedDocs } from 'payload'
@@ -118,7 +117,6 @@ export const queryPosts = async <T extends Partial<Record<keyof Post, true>> | u
 		return result
 	} catch (error) {
 		console.error('Error fetching posts', { error })
-		logger.error('Error fetching posts', { error })
 		return null
 	}
 }
@@ -231,7 +229,6 @@ export const queryPostCategories = async <
 		}
 	} catch (error) {
 		console.error('Error fetching postCategories', { error })
-		logger.error('Error fetching postCategories', { error })
 		return null
 	}
 }
