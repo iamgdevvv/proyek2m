@@ -9,7 +9,7 @@
 .inner {
 	@apply relative;
 	@apply flex flex-col justify-end;
-	@apply w-full aspect-[16/10] p-4 md:px-6;
+	@apply w-full aspect-[16/10] p-5 md:p-8;
 
 	&::before {
 		@apply content-[''] absolute top-0 left-0 z-1;
@@ -41,8 +41,11 @@
 	@apply transition scale-100;
 }
 
-.title {
+.content {
 	@apply relative z-3;
+}
+
+.title {
 	@apply mt-0;
 	@apply text-2xl text-white font-semibold;
 }

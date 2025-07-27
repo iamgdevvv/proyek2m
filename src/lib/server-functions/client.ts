@@ -96,6 +96,12 @@ export const queryClients = async <T extends Partial<Record<keyof Client, true>>
 			})
 		}
 
+		whereAnd.push({
+			_status: {
+				equals: 'published',
+			},
+		})
+
 		const result = await payload.find({
 			collection: 'clients',
 			limit,

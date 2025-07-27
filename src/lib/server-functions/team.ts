@@ -107,6 +107,12 @@ export const queryTeams = async <T extends Partial<Record<keyof Team, true>> | u
 			})
 		}
 
+		whereAnd.push({
+			_status: {
+				equals: 'published',
+			},
+		})
+
 		const result = await payload.find({
 			collection: 'teams',
 			limit,
@@ -179,6 +185,12 @@ export const queryTeamPositions = async <
 				},
 			})
 		}
+
+		whereAnd.push({
+			_status: {
+				equals: 'published',
+			},
+		})
 
 		const result = await payload.find({
 			collection: 'teamPositions',

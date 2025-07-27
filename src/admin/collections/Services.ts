@@ -3,7 +3,11 @@ import type { CollectionConfig } from 'payload'
 import { BannerBlock } from '$payload-blocks/Banner'
 import { afterReadHookLink } from '$payload-fields/link'
 import { metafield } from '$payload-fields/metadata'
-import { authenticated, authenticatedActionRole } from '$payload-libs/access-rules'
+import {
+	authenticated,
+	authenticatedActionRole,
+	authenticatedOrPublished,
+} from '$payload-libs/access-rules'
 import { revalidateChange, revalidateDelete } from '$payload-libs/hooks/revalidate'
 import { generatePreviewPath } from '$payload-libs/preview-path'
 
@@ -45,7 +49,7 @@ export const Services: CollectionConfig = {
 	},
 	access: {
 		create: authenticated,
-		read: () => true,
+		read: authenticatedOrPublished,
 		update: authenticatedActionRole,
 		delete: authenticatedActionRole,
 	},

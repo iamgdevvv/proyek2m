@@ -89,6 +89,12 @@ export const queryTemplates = async <T extends Partial<Record<keyof Template, tr
 			})
 		}
 
+		whereAnd.push({
+			_status: {
+				equals: 'published',
+			},
+		})
+
 		const result = await payload.find({
 			collection: 'templates',
 			limit,

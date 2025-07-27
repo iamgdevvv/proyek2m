@@ -65,6 +65,11 @@ export const postSitemap = async () => {
 			limit: 100000,
 			overrideAccess: false,
 			pagination: false,
+			where: {
+				_status: {
+					equals: 'published',
+				},
+			},
 			select: {
 				title: true,
 				slug: true,
@@ -93,6 +98,11 @@ export const clientSitemap = async () => {
 			limit: 100000,
 			overrideAccess: false,
 			pagination: false,
+			where: {
+				_status: {
+					equals: 'published',
+				},
+			},
 			select: {
 				title: true,
 				slug: true,
@@ -120,6 +130,11 @@ export const pageSitemap = async () => {
 			limit: 100000,
 			overrideAccess: false,
 			pagination: false,
+			where: {
+				_status: {
+					equals: 'published',
+				},
+			},
 			select: {
 				title: true,
 				slug: true,
@@ -148,6 +163,11 @@ export const postCategorySitemap = async () => {
 			limit: 100000,
 			overrideAccess: false,
 			pagination: false,
+			where: {
+				_status: {
+					equals: 'published',
+				},
+			},
 			select: {
 				title: true,
 				slug: true,
@@ -175,6 +195,11 @@ export const teamSitemap = async () => {
 			limit: 100000,
 			overrideAccess: false,
 			pagination: false,
+			where: {
+				_status: {
+					equals: 'published',
+				},
+			},
 			select: {
 				title: true,
 				slug: true,
@@ -203,6 +228,11 @@ export const teamPositionSitemap = async () => {
 			limit: 100000,
 			overrideAccess: false,
 			pagination: false,
+			where: {
+				_status: {
+					equals: 'published',
+				},
+			},
 			select: {
 				title: true,
 				slug: true,
@@ -230,6 +260,20 @@ export const templateSitemap = async () => {
 			limit: 100000,
 			overrideAccess: false,
 			pagination: false,
+			where: {
+				and: [
+					{
+						_status: {
+							equals: 'published',
+						},
+					},
+					{
+						available: {
+							equals: true,
+						},
+					},
+				],
+			},
 			select: {
 				title: true,
 				slug: true,
@@ -257,6 +301,11 @@ export const serviceSitemap = async () => {
 			limit: 100000,
 			overrideAccess: false,
 			pagination: false,
+			where: {
+				_status: {
+					equals: 'published',
+				},
+			},
 			select: {
 				title: true,
 				slug: true,

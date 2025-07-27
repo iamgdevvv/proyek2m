@@ -15,3 +15,15 @@ export const authenticatedActionRole: Access = ({ data, req: { user } }) => {
 
 	return true
 }
+
+export const authenticatedOrPublished: Access = ({ req: { user } }) => {
+	if (user) {
+		return true
+	}
+
+	return {
+		_status: {
+			equals: 'published',
+		},
+	}
+}

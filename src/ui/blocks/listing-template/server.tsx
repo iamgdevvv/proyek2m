@@ -103,6 +103,7 @@ export const queryListingTemplate = async (
 			slug: true,
 			featuredImage: true,
 			services: true,
+			available: true,
 		},
 	)
 }

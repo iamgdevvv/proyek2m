@@ -25,6 +25,12 @@ export const queryPages = async <T extends Partial<Record<keyof Page, true>> | u
 		const whereAnd: Where['and'] = options?.whereAnd || []
 		const whereOr: Where['and'] = options?.whereOr || []
 
+		whereAnd.push({
+			_status: {
+				equals: 'published',
+			},
+		})
+
 		const result = await payload.find({
 			collection: 'pages',
 			limit,

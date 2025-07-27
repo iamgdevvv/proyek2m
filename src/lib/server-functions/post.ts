@@ -100,6 +100,12 @@ export const queryPosts = async <T extends Partial<Record<keyof Post, true>> | u
 			})
 		}
 
+		whereAnd.push({
+			_status: {
+				equals: 'published',
+			},
+		})
+
 		const result = await payload.find({
 			collection: 'posts',
 			limit,
@@ -183,6 +189,12 @@ export const queryPostCategories = async <
 				},
 			})
 		}
+
+		whereAnd.push({
+			_status: {
+				equals: 'published',
+			},
+		})
 
 		const result = await payload.find({
 			collection: 'postCategories',
