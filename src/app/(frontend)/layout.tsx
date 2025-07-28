@@ -45,6 +45,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 		>
 			<head>
 				<ColorSchemeScript />
+				<meta
+					name="dicoding:email"
+					content="gn.mailwork@gmail.com"
+				/>
 			</head>
 			<body>
 				<MantineProvider theme={theme}>

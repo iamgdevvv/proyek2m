@@ -7,6 +7,7 @@
 .featuredImage {
 	@apply w-full aspect-[16/9];
 	@apply rounded-lg;
+	@apply bg-gray-100;
 }
 
 .article {
